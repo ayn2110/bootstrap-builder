@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 互動學習遊戲</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+
+            <h1>🎮 Bootstrap Builder</h1>
+            <p>透過實作學習 Bootstrap 網格系統</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9em;">關卡進度: <span id="levelProgress">1 / 21</span></p>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="level-info">
+                    <div class="level-number" id="levelNumber">關卡 1-1</div>
+                    <div class="level-title" id="levelTitle">容器邊界</div>
+                    <div class="level-description" id="levelDescription">
+                        將內容放置於一個標準的響應式容器中,使其在頁面兩側保留適當的邊距。
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">💻 程式碼編輯器</div>
+                    <div class="code-editor" id="codeEditor">
+                        <!-- 動態生成 -->
+                    </div>
+                    <div class="button-group">
+                        <button class="btn-custom btn-check" onclick="checkAnswer()">✓ 檢查答案</button>
+                        <button class="btn-custom btn-reset" onclick="resetCode()">↻ 重置</button>
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">💡 提示</div>
+                    <div class="hint-section" id="hintSection">
+                        使用 <code>.container</code> 類別來創建一個響應式固定寬度的容器。
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="section">
+                    <div class="section-title">👁️ 即時預覽</div>
+                    <div class="preview-area" id="previewArea">
+                        <!-- 動態生成 -->
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">🎯 目標效果參考</div>
+                    <div class="reference-image" id="referenceImage">
+                        參考設計圖片區域
+                    </div>
+                </div>
+
+                <div class="button-group" style="margin-top: auto;">
+                    <button class="btn-custom btn-next" onclick="nextLevel()">下一關 →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const levels = [
+            {
+                id: '1-1',
+                title: '容器邊界',
+                description: '將內容放置於一個標準的響應式容器中,使其在頁面兩側保留適當的邊距。',
+                hint: '使用 <code>.container</code> 類別來創建一個響應式固定寬度的容器。',
+                htmlTemplate: '<div class="{{input1}}">\n  <p>這是容器內的內容</p>\n</div>',
+                inputs: [{placeholder: 'container', answer: 'container'}],
+                preview: '<div class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">這是容器內的內容</div>'
+            },
+            {
+                id: '1-2',
+                title: '全寬內容',
+                description: '將橫幅廣告 (Banner) 延伸至螢幕兩側邊緣,實現滿版效果。',
+                hint: '使用 <code>.container-fluid</code> 類別來創建一個全寬容器。',
+                htmlTemplate: '<div class="{{input1}}">\n  <div class="banner">橫幅廣告</div>\n</div>',
+                inputs: [{placeholder: 'container-fluid', answer: 'container-fluid'}],
+                preview: '<div class="{{class1}}" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; font-size: 1.5em;">橫幅廣告</div>'
+            },
+            {
+                id: '1-3',
+                title: '啟動分欄',
+                description: '在容器中創建一個新的水平區塊,準備進行內容分欄。',
+                hint: '使用 <code>.row</code> 類別來創建一個水平分欄容器。',
+                htmlTemplate: '<div class="container">\n  <div class="{{input1}}">\n    <div class="col">內容區塊</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'row', answer: 'row'}],
+                preview: '<div class="container"><div class="{{class1}}"><div class="col preview-element">內容區塊</div></div></div>'
+            },
+            {
+                id: '1-4',
+                title: '自動填充',
+                description: '將一個元件放入 row 中,讓它自動佔滿所有可用空間 (單一區塊)。',
+                hint: '使用 <code>.col</code> 類別讓元素自動填充可用空間。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">產品卡片</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'col', answer: 'col'}],
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品卡片</div></div></div>'
+            },
+            {
+                id: '1-5',
+                title: '雙欄對等',
+                description: '將兩個產品卡片放入 row 中,讓它們平均分配為兩個等寬區塊。',
+                hint: '在同一個 row 中使用兩次 <code>.col</code> 類別。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">產品 A</div>\n    <div class="{{input1}}">產品 B</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'col', answer: 'col'}],
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品 A</div><div class="{{class1}} preview-element">產品 B</div></div></div>'
+            },
+            {
+                id: '1-6',
+                title: '三欄佈局',
+                description: '將三個服務圖標放入 row 中,平均分成三個等寬區塊。',
+                hint: '在同一個 row 中使用三次 <code>.col</code> 類別。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">服務 1</div>\n    <div class="{{input1}}">服務 2</div>\n    <div class="{{input1}}">服務 3</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'col', answer: 'col'}],
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">服務 1</div><div class="{{class1}} preview-element">服務 2</div><div class="{{class1}} preview-element">服務 3</div></div></div>'
+            },
+            {
+                id: '1-7',
+                title: '五等份挑戰',
+                description: '將五個步驟說明放入 row 中,讓它們等寬並排。',
+                hint: '在同一個 row 中使用五次 <code>.col</code> 類別。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">步驟1</div>\n    <div class="{{input1}}">步驟2</div>\n    <div class="{{input1}}">步驟3</div>\n    <div class="{{input1}}">步驟4</div>\n    <div class="{{input1}}">步驟5</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'col', answer: 'col'}],
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟1</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟2</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟3</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟4</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟5</div></div></div>'
+            },
+            {
+                id: '1-8',
+                title: '內容側邊欄',
+                description: '創建一個經典的內容佈局:主內容佔 8 欄,右側的側邊欄佔 4 欄。',
+                hint: '使用 <code>.col-8</code> 和 <code>.col-4</code> 來指定欄寬。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">主內容</div>\n    <div class="{{input2}}">側邊欄</div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'col-8', answer: 'col-8'},
+                    {placeholder: 'col-4', answer: 'col-4'}
+                ],
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">主內容</div><div class="{{class2}} preview-element">側邊欄</div></div></div>'
+            },
+            {
+                id: '1-9',
+                title: '管理區塊',
+                description: '創建管理者後台常見的佈局:主要數據表格佔 9 欄,操作按鈕區佔 3 欄。',
+                hint: '使用 <code>.col-9</code> 和 <code>.col-3</code> 來分配空間。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">數據表格</div>\n    <div class="{{input2}}">操作按鈕</div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'col-9', answer: 'col-9'},
+                    {placeholder: 'col-3', answer: 'col-3'}
+                ],
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">數據表格</div><div class="{{class2}} preview-element">操作按鈕</div></div></div>'
+            },
+            {
+                id: '2-1',
+                title: '水平居中',
+                description: '將一個固定寬度的區塊 (如登入表單) 在頁面上水平置中。',
+                hint: '使用 <code>.mx-auto</code> 來設置左右外邊距為自動,實現水平居中。需要配合固定寬度的欄位如 <code>.col-6</code>。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-6 {{input1}}">登入表單</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'mx-auto', answer: 'mx-auto'}],
+                preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>'
+            },
+            {
+                id: '2-2',
+                title: '頂部留白',
+                description: '調整標題的上內邊距 (Padding Top) 為級別 5 (最大間距)。',
+                hint: '使用 <code>.pt-5</code> 來設置上內邊距為最大級別。',
+                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">網站標題</h2>\n  <p>內容文字...</p>\n</div>',
+                inputs: [{placeholder: 'pt-5', answer: 'pt-5'}],
+                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding-left: 20px; padding-right: 20px; border-radius: 5px;">網站標題</h2><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">內容文字...</p></div>'
+            },
+            {
+                id: '2-3',
+                title: '底部外擴',
+                description: '調整圖片區塊的下外邊距 (Margin Bottom) 為級別 4,與下方內容拉開距離。',
+                hint: '使用 <code>.mb-4</code> 來設置下外邊距。',
+                htmlTemplate: '<div class="container">\n  <div class="image-box {{input1}}">圖片區域</div>\n  <p>說明文字</p>\n</div>',
+                inputs: [{placeholder: 'mb-4', answer: 'mb-4'}],
+                preview: '<div class="container"><div class="{{class1}}" style="background: #667eea; color: white; padding: 40px; text-align: center; border-radius: 5px;">圖片區域</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">說明文字</p></div>'
+            },
+            {
+                id: '2-4',
+                title: '文字置中',
+                description: '將標題文字對齊置中。',
+                hint: '使用 <code>.text-center</code> 來將文字置中對齊。',
+                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">歡迎來到我們的網站</h2>\n</div>',
+                inputs: [{placeholder: 'text-center', answer: 'text-center'}],
+                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>'
+            },
+            {
+                id: '2-5',
+                title: '垂直對齊',
+                description: '將 row 內所有分欄(如圖標和文字)在垂直方向上對齊到中心。',
+                hint: '在 <code>.row</code> 上使用 <code>.align-items-center</code> 來垂直居中對齊所有子元素。',
+                htmlTemplate: '<div class="container">\n  <div class="row {{input1}}" style="min-height: 150px;">\n    <div class="col">圖標</div>\n    <div class="col">文字說明</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'align-items-center', answer: 'align-items-center'}],
+                preview: '<div class="container"><div class="row {{class1}}" style="min-height: 150px; background: #f8f9fa; border-radius: 5px;"><div class="col preview-element">圖標</div><div class="col preview-element">文字說明</div></div></div>'
+            },
+            {
+                id: '2-6',
+                title: '間距微調',
+                description: '調整卡片的上邊距 (mt) 為 3,左右內邊距 (px) 為 4,實現視覺微調。',
+                hint: '使用 <code>.mt-3</code> 和 <code>.px-4</code> 組合。',
+                htmlTemplate: '<div class="container">\n  <div class="card {{input1}} {{input2}}">卡片內容</div>\n</div>',
+                inputs: [
+                    {placeholder: 'mt-3', answer: 'mt-3'},
+                    {placeholder: 'px-4', answer: 'px-4'}
+                ],
+                preview: '<div class="container"><div class="{{class1}} {{class2}} preview-element">卡片內容</div></div>'
+            },
+            {
+                id: '2-7',
+                title: '均勻分佈',
+                description: '將一組按鈕水平放置,並確保它們之間及邊緣都有平均間隔。',
+                hint: '在 <code>.row</code> 上使用 <code>.justify-content-around</code> 來均勻分佈元素。',
+                htmlTemplate: '<div class="container">\n  <div class="row {{input1}}">\n    <div class="col-auto">按鈕1</div>\n    <div class="col-auto">按鈕2</div>\n    <div class="col-auto">按鈕3</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'justify-content-around', answer: 'justify-content-around'}],
+                preview: '<div class="container"><div class="row {{class1}}"><div class="col-auto preview-element">按鈕1</div><div class="col-auto preview-element">按鈕2</div><div class="col-auto preview-element">按鈕3</div></div></div>'
+            },
+            {
+                id: '3-1',
+                title: '中斷點分割',
+                description: '(RWD) 在桌面 (md) 尺寸下,將兩張卡片並排 (各佔 6 欄),但在手機 (xs) 上必須堆疊。',
+                hint: '使用 <code>.col-12</code> (手機全寬) 和 <code>.col-md-6</code> (桌面各半) 組合。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}} {{input2}}">卡片 A</div>\n    <div class="{{input1}} {{input2}}">卡片 B</div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'col-12', answer: 'col-12'},
+                    {placeholder: 'col-md-6', answer: 'col-md-6'}
+                ],
+                preview: '<div class="container"><div class="row"><div class="{{class1}} {{class2}} preview-element">卡片 A</div><div class="{{class1}} {{class2}} preview-element">卡片 B</div></div></div>'
+            },
+            {
+                id: '3-2',
+                title: '順序反轉',
+                description: '(RWD) 在桌面尺寸下,側邊欄放在右邊;但在手機上,側邊欄必須移到主內容上方。',
+                hint: '使用 <code>.order-first</code> (手機優先) 和 <code>.order-md-last</code> (桌面最後) 在側邊欄上。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-12 col-md-8">主內容</div>\n    <div class="col-12 col-md-4 {{input1}} {{input2}}">側邊欄</div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'order-first', answer: 'order-first'},
+                    {placeholder: 'order-md-last', answer: 'order-md-last'}
+                ],
+                preview: '<div class="container"><div class="row"><div class="col-12 col-md-8 preview-element">主內容</div><div class="col-12 col-md-4 {{class1}} {{class2}} preview-element">側邊欄</div></div></div>'
+            },
+            {
+                id: '3-3',
+                title: '欄位位移',
+                description: '將一個佔 6 欄的表單,向右側移動 3 欄的距離,使其在容器中置中。',
+                hint: '使用 <code>.offset-3</code> 來向右偏移 3 欄。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-6 {{input1}}">登入表單</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'offset-3', answer: 'offset-3'}],
+                preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>'
+            },
+            {
+                id: '3-4',
+                title: '消除間距',
+                description: '消除圖片畫廊中所有 row 與 col 之間的預設邊距 (gutter),實現無縫接合。',
+                hint: '在 <code>.row</code> 上使用 <code>.g-0</code> 來移除所有間距。',
+                htmlTemplate: '<div class="container">\n  <div class="row {{input1}}">\n    <div class="col-4">圖片1</div>\n    <div class="col-4">圖片2</div>\n    <div class="col-4">圖片3</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'g-0', answer: 'g-0'}],
+                preview: '<div class="container"><div class="row {{class1}}"><div class="col-4 preview-element" style="margin: 0;">圖片1</div><div class="col-4 preview-element" style="margin: 0;">圖片2</div><div class="col-4 preview-element" style="margin: 0;">圖片3</div></div></div>'
+            },
+            {
+                id: '3-5',
+                title: '特定隱藏',
+                description: '(RWD) 隱藏手機上複雜的日期選擇器,只在大型桌面 (lg) 尺寸上顯示。',
+                hint: '使用 <code>.d-none</code> (預設隱藏) 和 <code>.d-lg-block</code> (大螢幕顯示) 組合。',
+                htmlTemplate: '<div class="container">\n  <div class="{{input1}} {{input2}}">日期選擇器</div>\n  <p>其他內容</p>\n</div>',
+                inputs: [
+                    {placeholder: 'd-none', answer: 'd-none'},
+                    {placeholder: 'd-lg-block', answer: 'd-lg-block'}
+                ],
+                preview: '<div class="container"><div class="{{class1}} {{class2}} preview-element">日期選擇器</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">其他內容</p></div>'
+            }
+        ];
+
+        let currentLevel = 0;
+        let userInputs = [];
+
+        function loadLevel(levelIndex) {
+            if (levelIndex >= levels.length) {
+                showCompletion();
+                return;
+            }
+
+            currentLevel = levelIndex;
+            const level = levels[currentLevel];
+
+            document.getElementById('levelNumber').textContent = `關卡 ${level.id}`;
+            document.getElementById('levelTitle').textContent = level.title;
+            document.getElementById('levelDescription').textContent = level.description;
+            document.getElementById('hintSection').innerHTML = level.hint;
+
+            userInputs = level.inputs.map(() => '');
+            renderCodeEditor();
+            updatePreview();
+            updateProgress();
+
+            document.getElementById('feedback').style.display = 'none';
+        }
+
+        function renderCodeEditor() {
+            const level = levels[currentLevel];
+            const editor = document.getElementById('codeEditor');
+            editor.innerHTML = '';
+
+            const lines = level.htmlTemplate.split('\n');
+            lines.forEach((line, index) => {
+                const div = document.createElement('div');
+                div.className = 'code-line';
+
+                let processedLine = line;
+                level.inputs.forEach((input, inputIndex) => {
+                    const placeholder = `{{input${inputIndex + 1}}}`;
+                    if (processedLine.includes(placeholder)) {
+                        const inputElement = `<input type="text" class="code-input" id="input${inputIndex}" placeholder="${input.placeholder}" value="${userInputs[inputIndex] || ''}" oninput="handleInput(${inputIndex}, this.value)">`;
+                        processedLine = processedLine.replace(placeholder, inputElement);
+                    }
+                });
+
+                div.innerHTML = processedLine
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/&lt;input/g, '<input')
+                    .replace(/&gt;/g, '>');
+
+                editor.appendChild(div);
+            });
+        }
+
+        function handleInput(index, value) {
+            userInputs[index] = value.trim();
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const level = levels[currentLevel];
+            let previewHTML = level.preview;
+
+            level.inputs.forEach((input, index) => {
+                const placeholder = `{{class${index + 1}}}`;
+                previewHTML = previewHTML.replace(new RegExp(placeholder, 'g'), userInputs[index] || '');
+            });
+
+            document.getElementById('previewArea').innerHTML = previewHTML;
+        }
+
+        function checkAnswer() {
+            const level = levels[currentLevel];
+            const feedback = document.getElementById('feedback');
+
+            let allCorrect = true;
+            level.inputs.forEach((input, index) => {
+                if (userInputs[index].toLowerCase() !== input.answer.toLowerCase()) {
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect) {
+                feedback.className = 'feedback success';
+                feedback.textContent = '🎉 太棒了!答案正確!點擊「下一關」繼續挑戰。';
+                feedback.style.display = 'block';
+            } else {
+                feedback.className = 'feedback error';
+                feedback.textContent = '❌ 還不太對喔,再試試看!檢查一下提示區域的說明。';
+                feedback.style.display = 'block';
+            }
+        }
+
+        function resetCode() {
+            userInputs = levels[currentLevel].inputs.map(() => '');
+            renderCodeEditor();
+            updatePreview();
+            document.getElementById('feedback').style.display = 'none';
+        }
+
+        function nextLevel() {
+            const level = levels[currentLevel];
+            let allCorrect = true;
+            level.inputs.forEach((input, index) => {
+                if (userInputs[index].toLowerCase() !== input.answer.toLowerCase()) {
+                    allCorrect = false;
+                }
+            });
+
+            if (!allCorrect) {
+                const feedback = document.getElementById('feedback');
+                feedback.className = 'feedback error';
+                feedback.textContent = '⚠️ 請先完成當前關卡再進入下一關!';
+                feedback.style.display = 'block';
+                return;
+            }
+
+            if (currentLevel < levels.length - 1) {
+                loadLevel(currentLevel + 1);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showCompletion();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentLevel + 1) / levels.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('levelProgress').textContent = `${currentLevel + 1} / ${levels.length}`;
+        }
+
+        function showCompletion() {
+            const container = document.querySelector('.game-container');
+            container.innerHTML = `
+                <div class="header">
+                    <h1>🎉 恭喜完成!</h1>
+                    <p>你已經完成所有 21 個關卡!</p>
+                </div>
+                <div style="padding: 60px; text-align: center;">
+                    <div style="font-size: 5em; margin-bottom: 20px;">🏆</div>
+                    <h2 style="color: #667eea; margin-bottom: 20px;">Bootstrap 大師誕生!</h2>
+                    <p style="font-size: 1.2em; color: #6c757d; max-width: 600px; margin: 0 auto 40px;">
+                        你已經掌握了 Bootstrap 網格系統的核心概念,包括容器、行列、響應式設計和間距控制。
+                        現在你可以自信地使用 Bootstrap 來建立專業的網頁佈局了!
+                    </p>
+                    <button class="btn-custom btn-check" onclick="location.reload()" style="max-width: 300px; margin: 0 auto;">
+                        🔄 重新開始挑戰
+                    </button>
+                </div>
+            `;
+        }
+
+        // 初始化遊戲
+        loadLevel(0);
+    </script>
+</body>
+</html>

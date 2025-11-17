@@ -1,0 +1,37 @@
+# 系統文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# 編輯器備份
+*.bak
+*.tmp
+
+# 依賴
+node_modules/
+package-lock.json
+yarn.lock
+
+# 構建產物
+dist/
+build/
+
+# 日誌
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 環境
+.env
+.env.local
+.env.*.local
