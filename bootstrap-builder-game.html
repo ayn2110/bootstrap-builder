@@ -10,8 +10,12 @@
 <body>
     <div class="game-container">
         <div class="header">
-
-            <h1>🎮 Bootstrap Builder</h1>
+            <div class="header-top">
+                <h1>🎮 Bootstrap Builder</h1>
+                <button class="btn-menu" data-bs-toggle="offcanvas" data-bs-target="#levelOffcanvas" aria-controls="levelOffcanvas">
+                    ☰ 大綱
+                </button>
+            </div>
             <p>透過實作學習 Bootstrap 網格系統</p>
             <div class="progress-bar-container">
                 <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
@@ -303,6 +307,7 @@
             renderCodeEditor();
             updatePreview();
             updateProgress();
+            updateMenuActiveState();
 
             document.getElementById('feedback').style.display = 'none';
         }
@@ -413,6 +418,20 @@
             document.getElementById('levelProgress').textContent = `${currentLevel + 1} / ${levels.length}`;
         }
 
+        function updateMenuActiveState() {
+            // 移除所有活躍狀態
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            // 為當前關卡添加活躍狀態
+            const currentMenuItem = document.querySelector(`[data-level="${levels[currentLevel].id}"]`);
+            if (currentMenuItem) {
+                currentMenuItem.classList.add('active');
+                // 滾動 offcanvas 以顯示活躍項目
+                currentMenuItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
         function showCompletion() {
             const container = document.querySelector('.game-container');
             container.innerHTML = `
@@ -436,6 +455,76 @@
 
         // 初始化遊戲
         loadLevel(0);
+    </script>
+
+    <!-- Offcanvas 菜單 -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="levelOffcanvas" aria-labelledby="levelOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="levelOffcanvasLabel">📚 遊戲大綱</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="levels-menu">
+                <!-- 主題一：網格系統與排版基礎 -->
+                <div class="menu-section">
+                    <div class="section-header">主題一：網格系統與排版基礎</div>
+                    <div class="menu-items">
+                        <a href="#" onclick="jumpToLevel(0)" class="menu-item" data-level="1-1">1-1 容器邊界</a>
+                        <a href="#" onclick="jumpToLevel(1)" class="menu-item" data-level="1-2">1-2 全寬內容</a>
+                        <a href="#" onclick="jumpToLevel(2)" class="menu-item" data-level="1-3">1-3 啟動分欄</a>
+                        <a href="#" onclick="jumpToLevel(3)" class="menu-item" data-level="1-4">1-4 自動填充</a>
+                        <a href="#" onclick="jumpToLevel(4)" class="menu-item" data-level="1-5">1-5 雙欄對等</a>
+                        <a href="#" onclick="jumpToLevel(5)" class="menu-item" data-level="1-6">1-6 三欄佈局</a>
+                        <a href="#" onclick="jumpToLevel(6)" class="menu-item" data-level="1-7">1-7 五等份挑戰</a>
+                        <a href="#" onclick="jumpToLevel(7)" class="menu-item" data-level="1-8">1-8 內容側邊欄</a>
+                        <a href="#" onclick="jumpToLevel(8)" class="menu-item" data-level="1-9">1-9 管理區塊</a>
+                    </div>
+                </div>
+
+                <!-- 主題二：間距與對齊 -->
+                <div class="menu-section">
+                    <div class="section-header">主題二：間距與對齊</div>
+                    <div class="menu-items">
+                        <a href="#" onclick="jumpToLevel(9)" class="menu-item" data-level="2-1">2-1 水平居中</a>
+                        <a href="#" onclick="jumpToLevel(10)" class="menu-item" data-level="2-2">2-2 頂部留白</a>
+                        <a href="#" onclick="jumpToLevel(11)" class="menu-item" data-level="2-3">2-3 底部外擴</a>
+                        <a href="#" onclick="jumpToLevel(12)" class="menu-item" data-level="2-4">2-4 文字置中</a>
+                        <a href="#" onclick="jumpToLevel(13)" class="menu-item" data-level="2-5">2-5 垂直對齊</a>
+                        <a href="#" onclick="jumpToLevel(14)" class="menu-item" data-level="2-6">2-6 間距微調</a>
+                        <a href="#" onclick="jumpToLevel(15)" class="menu-item" data-level="2-7">2-7 均勻分佈</a>
+                    </div>
+                </div>
+
+                <!-- 主題三：響應式設計 -->
+                <div class="menu-section">
+                    <div class="section-header">主題三：響應式設計</div>
+                    <div class="menu-items">
+                        <a href="#" onclick="jumpToLevel(16)" class="menu-item" data-level="3-1">3-1 中斷點分割</a>
+                        <a href="#" onclick="jumpToLevel(17)" class="menu-item" data-level="3-2">3-2 順序反轉</a>
+                        <a href="#" onclick="jumpToLevel(18)" class="menu-item" data-level="3-3">3-3 欄位位移</a>
+                        <a href="#" onclick="jumpToLevel(19)" class="menu-item" data-level="3-4">3-4 消除間距</a>
+                        <a href="#" onclick="jumpToLevel(20)" class="menu-item" data-level="3-5">3-5 特定隱藏</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        // 跳轉到指定關卡
+        function jumpToLevel(levelIndex) {
+            event.preventDefault();
+            // 關閉 offcanvas
+            const offcanvas = document.getElementById('levelOffcanvas');
+            const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvas);
+            if (bsOffcanvas) {
+                bsOffcanvas.hide();
+            }
+            // 加載關卡
+            loadLevel(levelIndex);
+            // 滾動到頂部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>

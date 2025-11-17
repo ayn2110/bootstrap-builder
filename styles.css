@@ -99,7 +99,7 @@
 
         .level-description {
             font-size: 1em;
-            line-opacity: 0.95;
+            opacity: 0.95;
             line-height: 1.6;
         }
 
@@ -255,5 +255,125 @@
         @media (max-width: 968px) {
             .main-content {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Header 調整 */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-top h1 {
+            margin: 0;
+            flex: 1;
+        }
+
+        /* Menu 按鈕 */
+        .btn-menu {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-menu:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: white;
+            transform: scale(1.05);
+        }
+
+        .btn-menu:active {
+            transform: scale(0.98);
+        }
+
+        /* Offcanvas 自定義樣式 */
+        .offcanvas {
+            width: 350px !important;
+        }
+
+        .offcanvas-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .offcanvas-title {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        /* 菜單項目 */
+        .levels-menu {
+            background: #f8f9fa;
+            overflow-y: auto;
+            max-height: calc(100vh - 100px);
+        }
+
+        .menu-section {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .section-header {
+            background: #e9ecef;
+            padding: 15px;
+            font-weight: bold;
+            color: #495057;
+            font-size: 0.95em;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #495057;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .menu-item:hover {
+            background: #e7f3ff;
+            color: #667eea;
+            padding-left: 25px;
+            font-weight: 600;
+        }
+
+        .menu-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left: 4px solid #4ade80;
+            padding-left: 16px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 968px) {
+            .offcanvas {
+                width: 100% !important;
+            }
+
+            .header-top {
+                flex-wrap: wrap;
+            }
+
+            .header-top h1 {
+                flex: 0 0 100%;
             }
         }
