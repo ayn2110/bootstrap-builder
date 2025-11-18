@@ -11,7 +11,7 @@
     <div class="game-container">
         <div class="header">
             <div class="header-top">
-                <h1>Bootstrap Builder</h1>
+                <h1>🎮 Bootstrap Builder</h1>
                 <button class="btn-menu" data-bs-toggle="offcanvas" data-bs-target="#levelOffcanvas" aria-controls="levelOffcanvas">
                     ☰ 大綱
                 </button>
@@ -25,7 +25,6 @@
 
         <div class="main-content">
             <div class="left-panel">
-               
                 <div class="level-info">
                     <div class="level-number" id="levelNumber">關卡 1-1</div>
                     <div class="level-title" id="levelTitle">容器邊界</div>
@@ -41,7 +40,7 @@
                     </div>
                     <div class="button-group">
                         <button class="btn-custom btn-check" onclick="checkAnswer()">✓ 檢查答案</button>
-                        
+                        <button class="btn-custom btn-reset" onclick="resetCode()">↻ 重置</button>
                     </div>
                     <div class="feedback" id="feedback"></div>
                 </div>
@@ -51,8 +50,6 @@
                     <div class="hint-section" id="hintSection">
                         使用 <code>.container</code> 類別來創建一個響應式固定寬度的容器。
                     </div>
-                    <div class="css-reference" id="cssReference"></div>
-                    <div class="warning-box" id="warningBox" style="display: none;"></div>
                 </div>
             </div>
 
@@ -79,8 +76,7 @@
     </div>
 
     <script>
-            const levels = [
-                        
+        const levels = [
             {
                 id: '1-1',
                 title: '容器邊界',
@@ -88,8 +84,7 @@
                 hint: '使用 <code>.container</code> 類別來創建一個響應式固定寬度的容器。',
                 htmlTemplate: '<div class="{{input1}}">\n  <p>這是容器內的內容</p>\n</div>',
                 inputs: [{placeholder: 'container', answer: 'container'}],
-                preview: '<div class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">這是容器內的內容</div>',
-                cssInfo: '.container { max-width: 1140px (依螢幕尺寸); margin: 0 auto; padding: 0 15px; }'
+                preview: '<div class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">這是容器內的內容</div>'
             },
             {
                 id: '1-2',
@@ -98,8 +93,7 @@
                 hint: '使用 <code>.container-fluid</code> 類別來創建一個全寬容器。',
                 htmlTemplate: '<div class="{{input1}}">\n  <div class="banner">橫幅廣告</div>\n</div>',
                 inputs: [{placeholder: 'container-fluid', answer: 'container-fluid'}],
-                preview: '<div class="{{class1}}" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; font-size: 1.5em;">橫幅廣告</div>',
-                cssInfo: '.container-fluid { width: 100%; padding: 0 15px; }'
+                preview: '<div class="{{class1}}" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; font-size: 1.5em;">橫幅廣告</div>'
             },
             {
                 id: '1-3',
@@ -108,8 +102,7 @@
                 hint: '使用 <code>.row</code> 類別來創建一個水平分欄容器。',
                 htmlTemplate: '<div class="container">\n  <div class="{{input1}}">\n    <div class="col">內容區塊</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'row', answer: 'row'}],
-                preview: '<div class="container"><div class="{{class1}}"><div class="col preview-element">內容區塊</div></div></div>',
-                cssInfo: '.row { display: flex; flex-wrap: wrap; margin: 0 -15px; }'
+                preview: '<div class="container"><div class="{{class1}}"><div class="col preview-element">內容區塊</div></div></div>'
             },
             {
                 id: '1-4',
@@ -119,8 +112,6 @@
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">產品卡片</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
                 preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品卡片</div></div></div>'
-                ,cssInfo: '.col { flex: 1 0 0%; padding: 0 15px; }',
-                warning: '⚠️ 注意：col 的最後一個字母是小寫 L，不是數字 1！'
             },
             {
                 id: '1-5',
@@ -130,8 +121,6 @@
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">產品 A</div>\n    <div class="{{input1}}">產品 B</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
                 preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品 A</div><div class="{{class1}} preview-element">產品 B</div></div></div>'
-                ,cssInfo: '.col { flex: 1 0 0%; } /* 每個 col 平均分配空間 */'
-
             },
             {
                 id: '1-6',
@@ -141,7 +130,6 @@
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">服務 1</div>\n    <div class="{{input1}}">服務 2</div>\n    <div class="{{input1}}">服務 3</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
                 preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">服務 1</div><div class="{{class1}} preview-element">服務 2</div><div class="{{class1}} preview-element">服務 3</div></div></div>'
-                ,cssInfo: '.col { flex: 1 0 0%; } /* 三個 col 各佔 33.33% */'
             },
             {
                 id: '1-7',
@@ -151,7 +139,6 @@
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">步驟1</div>\n    <div class="{{input1}}">步驟2</div>\n    <div class="{{input1}}">步驟3</div>\n    <div class="{{input1}}">步驟4</div>\n    <div class="{{input1}}">步驟5</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
                 preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟1</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟2</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟3</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟4</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟5</div></div></div>'
-                ,cssInfo: '.col { flex: 1 0 0%; } /* 五個 col 各佔 20% */'
             },
             {
                 id: '1-8',
@@ -164,7 +151,6 @@
                     {placeholder: 'col-4', answer: 'col-4'}
                 ],
                 preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">主內容</div><div class="{{class2}} preview-element">側邊欄</div></div></div>'
-                ,cssInfo: '.col-8 { width: 66.67%; } /* 8/12 */\n.col-4 { width: 33.33%; } /* 4/12 */'
             },
             {
                 id: '1-9',
@@ -177,21 +163,6 @@
                     {placeholder: 'col-3', answer: 'col-3'}
                 ],
                 preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">數據表格</div><div class="{{class2}} preview-element">操作按鈕</div></div></div>'
-                ,cssInfo: '.col-9 { width: 75%; } /* 9/12 */\n.col-3 { width: 25%; } /* 3/12 */'
-            },
-            {
-                id: '1-10',
-                title: '超過12欄的處理',
-                description: '當一個 row 中的欄位加總超過 12 時，多餘的欄位會自動換行到下一列。',
-                hint: '使用 <code>.col-8</code> 和 <code>.col-6</code>，總和為 14 (超過 12)，第二個區塊會換行。',
-                htmlTemplate: '<div class="container">\n    <div class="row">\n        <div class="{{input1}}">區塊 A (8欄)</div>\n        <div class="{{input2}}">區塊 B (6欄,會換行)</div>\n    </div>\n</div>',
-                inputs: [
-                    {placeholder: 'col-8', answer: 'col-8'},
-                    {placeholder: 'col-6', answer: 'col-6'}
-                ],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">區塊 A (8欄)</div><div class="{{class2}} preview-element">區塊 B (6欄,會換行)</div></div></div>',
-                cssInfo: '當欄位總和 > 12 時，會自動換行\n8 + 6 = 14 > 12，所以 col-6 會換到下一行'
-                ,
             },
             {
                 id: '2-1',
@@ -201,36 +172,33 @@
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-6 {{input1}}">登入表單</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'mx-auto', answer: 'mx-auto'}],
                 preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>'
-                ,cssInfo: '.pt-3 { padding-top: 1rem; } /* 16px */'
             },
             {
                 id: '2-2',
-                title: '文字置中',
-                description: '將標題文字對齊置中。',
-                hint: '使用 <code>.text-center</code> 來將文字置中對齊。',
-                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">歡迎來到我們的網站</h2>\n</div>',
-                inputs: [{placeholder: 'text-center', answer: 'text-center'}],
-                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>'
-            },
-            {
-                id: '2-3',
                 title: '頂部留白',
                 description: '調整標題的上內邊距 (Padding Top) 為級別 5 (最大間距)。',
                 hint: '使用 <code>.pt-5</code> 來設置上內邊距為最大級別。',
                 htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">網站標題</h2>\n  <p>內容文字...</p>\n</div>',
                 inputs: [{placeholder: 'pt-5', answer: 'pt-5'}],
                 preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding-left: 20px; padding-right: 20px; border-radius: 5px;">網站標題</h2><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">內容文字...</p></div>'
-                
             },
             {
-                id: '2-4',
+                id: '2-3',
                 title: '底部外擴',
                 description: '調整圖片區塊的下外邊距 (Margin Bottom) 為級別 4,與下方內容拉開距離。',
                 hint: '使用 <code>.mb-4</code> 來設置下外邊距。',
                 htmlTemplate: '<div class="container">\n  <div class="image-box {{input1}}">圖片區域</div>\n  <p>說明文字</p>\n</div>',
                 inputs: [{placeholder: 'mb-4', answer: 'mb-4'}],
                 preview: '<div class="container"><div class="{{class1}}" style="background: #667eea; color: white; padding: 40px; text-align: center; border-radius: 5px;">圖片區域</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">說明文字</p></div>'
-                ,cssInfo: '.mb-3 { margin-bottom: 1rem; } /* 16px */',
+            },
+            {
+                id: '2-4',
+                title: '文字置中',
+                description: '將標題文字對齊置中。',
+                hint: '使用 <code>.text-center</code> 來將文字置中對齊。',
+                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">歡迎來到我們的網站</h2>\n</div>',
+                inputs: [{placeholder: 'text-center', answer: 'text-center'}],
+                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>'
             },
             {
                 id: '2-5',
@@ -262,16 +230,6 @@
                 inputs: [{placeholder: 'justify-content-around', answer: 'justify-content-around'}],
                 preview: '<div class="container"><div class="row {{class1}}"><div class="col-auto preview-element">按鈕1</div><div class="col-auto preview-element">按鈕2</div><div class="col-auto preview-element">按鈕3</div></div></div>'
             },
-            
-            {
-                id: '2-8',
-                title: '消除間距',
-                description: '消除圖片畫廊中所有 row 與 col 之間的預設邊距 (gutter),實現無縫接合。',
-                hint: '在 <code>.row</code> 上使用 <code>.g-0</code> 來移除所有間距。',
-                htmlTemplate: '<div class="container">\n  <div class="row {{input1}}">\n    <div class="col-4">圖片1</div>\n    <div class="col-4">圖片2</div>\n    <div class="col-4">圖片3</div>\n  </div>\n</div>',
-                inputs: [{placeholder: 'g-0', answer: 'g-0'}],
-                preview: '<div class="container"><div class="row {{class1}}"><div class="col-4 preview-element" style="margin: 0;">圖片1</div><div class="col-4 preview-element" style="margin: 0;">圖片2</div><div class="col-4 preview-element" style="margin: 0;">圖片3</div></div></div>'
-            },
             {
                 id: '3-1',
                 title: '中斷點分割',
@@ -283,37 +241,18 @@
                     {placeholder: 'col-md-6', answer: 'col-md-6'}
                 ],
                 preview: '<div class="container"><div class="row"><div class="{{class1}} {{class2}} preview-element">卡片 A</div><div class="{{class1}} {{class2}} preview-element">卡片 B</div></div></div>'
-                ,cssInfo: '.col-12 { width: 100%; }\n.col-md-6 { width: 50%; } /* 在 ≥768px 時生效 */',
-                warning: '⚠️ 注意：.col-md-6 中的 md 是裝置斷點 (medium)，不要與 .mb (margin-bottom) 混淆！\n💡 提示：請調整瀏覽器視窗大小來觀察響應式效果'
             },
-            // {
-            //     id: '3-2',
-            //     title: '順序反轉',
-            //     description: '(RWD) 在桌面尺寸下,側邊欄放在右邊;但在手機上,側邊欄必須移到主內容上方。',
-            //     hint: '使用 <code>.order-first</code> (手機優先) 和 <code>.order-md-last</code> (桌面最後) 在側邊欄上。',
-            //     htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-12 col-md-8">主內容</div>\n    <div class="col-12 col-md-4 {{input1}} {{input2}}">側邊欄</div>\n  </div>\n</div>',
-            //     inputs: [
-            //         {placeholder: 'order-first', answer: 'order-first'},
-            //         {placeholder: 'order-md-last', answer: 'order-md-last'}
-            //     ],
-            //     preview: '<div class="container"><div class="row"><div class="col-12 col-md-8 preview-element">主內容</div><div class="col-12 col-md-4 {{class1}} {{class2}} preview-element">側邊欄</div></div></div>'
-            // },
             {
                 id: '3-2',
-                title: '圖文排列 - 字左圖右',
-                description: '在桌面上顯示為文字在左、圖片在右；但手機上要讓圖片在文字上方。',
-                hint: '文字使用 <code>.col-12 .col-md-8</code>，圖片使用 <code>.col-12 .col-md-4 .order-first .order-md-last</code>。',
-                htmlTemplate: '<div class="container">\n    <div class="row">\n        <div class="{{input1}} {{input2}}">📝 文字說明</div>\n        <div class="{{input3}} {{input4}} {{input5}} {{input6}}">📷 圖片</div>\n    </div>\n</div>',
+                title: '順序反轉',
+                description: '(RWD) 在桌面尺寸下,側邊欄放在右邊;但在手機上,側邊欄必須移到主內容上方。',
+                hint: '使用 <code>.order-first</code> (手機優先) 和 <code>.order-md-last</code> (桌面最後) 在側邊欄上。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-12 col-md-8">主內容</div>\n    <div class="col-12 col-md-4 {{input1}} {{input2}}">側邊欄</div>\n  </div>\n</div>',
                 inputs: [
-                    {placeholder: 'col-12', answer: 'col-12'},
-                    {placeholder: 'col-md-8', answer: 'col-md-8'},
-                    {placeholder: 'col-12', answer: 'col-12'},
-                    {placeholder: 'col-md-4', answer: 'col-md-4'},
                     {placeholder: 'order-first', answer: 'order-first'},
                     {placeholder: 'order-md-last', answer: 'order-md-last'}
                 ],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} {{class2}} preview-element">📝 文字說明</div><div class="{{class3}} {{class4}} {{class5}} {{class6}} preview-element">📷 圖片</div></div></div>',
-                cssInfo: '使用 order 控制順序：\n手機: 圖片 order-first (-1) 在上\n桌面: 圖片 order-md-last (13) 在右'
+                preview: '<div class="container"><div class="row"><div class="col-12 col-md-8 preview-element">主內容</div><div class="col-12 col-md-4 {{class1}} {{class2}} preview-element">側邊欄</div></div></div>'
             },
             {
                 id: '3-3',
@@ -326,6 +265,15 @@
             },
             {
                 id: '3-4',
+                title: '消除間距',
+                description: '消除圖片畫廊中所有 row 與 col 之間的預設邊距 (gutter),實現無縫接合。',
+                hint: '在 <code>.row</code> 上使用 <code>.g-0</code> 來移除所有間距。',
+                htmlTemplate: '<div class="container">\n  <div class="row {{input1}}">\n    <div class="col-4">圖片1</div>\n    <div class="col-4">圖片2</div>\n    <div class="col-4">圖片3</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'g-0', answer: 'g-0'}],
+                preview: '<div class="container"><div class="row {{class1}}"><div class="col-4 preview-element" style="margin: 0;">圖片1</div><div class="col-4 preview-element" style="margin: 0;">圖片2</div><div class="col-4 preview-element" style="margin: 0;">圖片3</div></div></div>'
+            },
+            {
+                id: '3-5',
                 title: '特定隱藏',
                 description: '(RWD) 隱藏手機上複雜的日期選擇器,只在大型桌面 (lg) 尺寸上顯示。',
                 hint: '使用 <code>.d-none</code> (預設隱藏) 和 <code>.d-lg-block</code> (大螢幕顯示) 組合。',
@@ -350,28 +298,10 @@
             currentLevel = levelIndex;
             const level = levels[currentLevel];
 
-            document.getElementById('levelNumber').textContent = level.id === '0' ? '教學頁面' : `關卡 ${level.id}`;
+            document.getElementById('levelNumber').textContent = `關卡 ${level.id}`;
             document.getElementById('levelTitle').textContent = level.title;
             document.getElementById('levelDescription').textContent = level.description;
             document.getElementById('hintSection').innerHTML = level.hint;
-
-             // 顯示 CSS 參考
-            const cssRef = document.getElementById('cssReference');
-            if (level.cssInfo) {
-                cssRef.style.display = 'block';
-                cssRef.innerHTML = '<strong>📘 CSS 參考：</strong><br>' + level.cssInfo.replace(/\n/g, '<br>');
-            } else {
-                cssRef.style.display = 'none';
-            }
-
-            // 顯示警告訊息
-            const warningBox = document.getElementById('warningBox');
-            if (level.warning) {
-                warningBox.style.display = 'block';
-                warningBox.innerHTML = level.warning.replace(/\n/g, '<br>');
-            } else {
-                warningBox.style.display = 'none';
-            }
 
             userInputs = level.inputs.map(() => '');
             renderCodeEditor();
@@ -386,12 +316,6 @@
             const level = levels[currentLevel];
             const editor = document.getElementById('codeEditor');
             editor.innerHTML = '';
-
-            if (level.id === '0') {
-                // 教學頁面不顯示輸入框
-                editor.innerHTML = level.htmlTemplate;
-                return;
-            }
 
             const lines = level.htmlTemplate.split('\n');
             lines.forEach((line, index) => {
@@ -438,12 +362,6 @@
             const level = levels[currentLevel];
             const feedback = document.getElementById('feedback');
 
-            if (level.id === '0') {
-                // 教學頁面不檢查答案
-                feedback.style.display = 'none';
-                return;
-            }
-
             let allCorrect = true;
             level.inputs.forEach((input, index) => {
                 if (userInputs[index].toLowerCase() !== input.answer.toLowerCase()) {
@@ -462,16 +380,15 @@
             }
         }
 
-        
+        function resetCode() {
+            userInputs = levels[currentLevel].inputs.map(() => '');
+            renderCodeEditor();
+            updatePreview();
+            document.getElementById('feedback').style.display = 'none';
+        }
 
         function nextLevel() {
             const level = levels[currentLevel];
-            if (level.id === '0') {
-                // 教學頁面直接進入1-1
-                loadLevel(1);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return;
-            }
             let allCorrect = true;
             level.inputs.forEach((input, index) => {
                 if (userInputs[index].toLowerCase() !== input.answer.toLowerCase()) {
@@ -498,8 +415,7 @@
         function updateProgress() {
             const progress = ((currentLevel + 1) / levels.length) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
-            // 教學頁面顯示 0/總關卡
-            document.getElementById('levelProgress').textContent = currentLevel === 0 ? `0 / ${levels.length}` : `${currentLevel} / ${levels.length}`;
+            document.getElementById('levelProgress').textContent = `${currentLevel + 1} / ${levels.length}`;
         }
 
         function updateMenuActiveState() {
@@ -507,8 +423,6 @@
             document.querySelectorAll('.menu-item').forEach(item => {
                 item.classList.remove('active');
             });
-            // 教學頁面不顯示選單活躍
-            if (levels[currentLevel].id === '0') return;
             // 為當前關卡添加活躍狀態
             const currentMenuItem = document.querySelector(`[data-level="${levels[currentLevel].id}"]`);
             if (currentMenuItem) {
@@ -539,8 +453,8 @@
             `;
         }
 
-    // 初始化遊戲
-    loadLevel(0);
+        // 初始化遊戲
+        loadLevel(0);
     </script>
 
     <!-- Offcanvas 菜單 -->
@@ -564,9 +478,6 @@
                         <a href="#" onclick="jumpToLevel(6)" class="menu-item" data-level="1-7">1-7 五等份挑戰</a>
                         <a href="#" onclick="jumpToLevel(7)" class="menu-item" data-level="1-8">1-8 內容側邊欄</a>
                         <a href="#" onclick="jumpToLevel(8)" class="menu-item" data-level="1-9">1-9 管理區塊</a>
-                        <a href="#" onclick="jumpToLevel(9)" class="menu-item" data-level="1-10">1-10 超過12欄的處理</a>
-
-                        
                     </div>
                 </div>
 
@@ -574,14 +485,13 @@
                 <div class="menu-section">
                     <div class="section-header">主題二：間距與對齊</div>
                     <div class="menu-items">
-                        <a href="#" onclick="jumpToLevel(10)" class="menu-item" data-level="2-1">2-1 水平居中</a>
-                        <a href="#" onclick="jumpToLevel(11)" class="menu-item" data-level="2-2">2-2 文字置中</a>
-                        <a href="#" onclick="jumpToLevel(12)" class="menu-item" data-level="2-3">2-3 頂部留白</a>
-                        <a href="#" onclick="jumpToLevel(13)" class="menu-item" data-level="2-4">2-4 底部外擴</a>
-                        <a href="#" onclick="jumpToLevel(14)" class="menu-item" data-level="2-5">2-5 垂直對齊</a>
-                        <a href="#" onclick="jumpToLevel(15)" class="menu-item" data-level="2-6">2-6 間距微調</a>
-                        <a href="#" onclick="jumpToLevel(16)" class="menu-item" data-level="2-7">2-7 均勻分佈</a>
-                        <a href="#" onclick="jumpToLevel(17)" class="menu-item" data-level="2-8">2-8 消除間距</a>
+                        <a href="#" onclick="jumpToLevel(9)" class="menu-item" data-level="2-1">2-1 水平居中</a>
+                        <a href="#" onclick="jumpToLevel(10)" class="menu-item" data-level="2-2">2-2 頂部留白</a>
+                        <a href="#" onclick="jumpToLevel(11)" class="menu-item" data-level="2-3">2-3 底部外擴</a>
+                        <a href="#" onclick="jumpToLevel(12)" class="menu-item" data-level="2-4">2-4 文字置中</a>
+                        <a href="#" onclick="jumpToLevel(13)" class="menu-item" data-level="2-5">2-5 垂直對齊</a>
+                        <a href="#" onclick="jumpToLevel(14)" class="menu-item" data-level="2-6">2-6 間距微調</a>
+                        <a href="#" onclick="jumpToLevel(15)" class="menu-item" data-level="2-7">2-7 均勻分佈</a>
                     </div>
                 </div>
 
@@ -589,10 +499,11 @@
                 <div class="menu-section">
                     <div class="section-header">主題三：響應式設計</div>
                     <div class="menu-items">
-                        <a href="#" onclick="jumpToLevel(18)" class="menu-item" data-level="3-1">3-1 中斷點分割</a>
-                        <a href="#" onclick="jumpToLevel(19)" class="menu-item" data-level="3-2">3-2 順序反轉</a>
-                        <a href="#" onclick="jumpToLevel(20)" class="menu-item" data-level="3-3">3-3 欄位位移</a>
-                        <a href="#" onclick="jumpToLevel(21)" class="menu-item" data-level="3-5">3-4 特定隱藏</a>
+                        <a href="#" onclick="jumpToLevel(16)" class="menu-item" data-level="3-1">3-1 中斷點分割</a>
+                        <a href="#" onclick="jumpToLevel(17)" class="menu-item" data-level="3-2">3-2 順序反轉</a>
+                        <a href="#" onclick="jumpToLevel(18)" class="menu-item" data-level="3-3">3-3 欄位位移</a>
+                        <a href="#" onclick="jumpToLevel(19)" class="menu-item" data-level="3-4">3-4 消除間距</a>
+                        <a href="#" onclick="jumpToLevel(20)" class="menu-item" data-level="3-5">3-5 特定隱藏</a>
                     </div>
                 </div>
             </div>
