@@ -27,10 +27,10 @@
 - 📏 **Object-fit 填滿模式** - 學習object-fit: cover保持比例填滿容器
 - 📐 **Object-fit 縮放模式** - 學習object-fit: contain完整顯示圖片
 - 📱 **響應式圖片關卡** - 使用Bootstrap的.img-fluid類別實現響應式圖片
-- 📚 **Bootstrap官方手冊集成** - 為所有26個關卡新增官方文檔連結
+- 📚 **Bootstrap官方手冊集成** - 為所有25個關卡新增官方文檔連結
 
 ### 改進
-- 🎮 **遊戲關卡擴展** - 從21關擴展到26關
+- 🎮 **遊戲關卡擴展** - 從21關擴展到25關
 - 📖 **學習資源增強** - 每個關卡都有對應的Bootstrap官方文檔參考
 - 🎯 **菜單分類優化** - 新增主題四分類到Offcanvas菜單
 - 📈 **進度系統更新** - 進度條和計數器支援新的關卡總數
@@ -47,12 +47,11 @@
 - 為每個原有關卡新增`pageTitle`和`pageLink`屬性
 
 ### 學習內容
-**主題四：圖片處理附錄（5關）**
-- 4-1: 圖片尺寸統一 - CSS width/height 屬性應用
+**主題四：圖片處理附錄（4關）**
+- 4-1: 響應式圖片 - Bootstrap .img-fluid 類別實作
 - 4-2: 背景圖片設定 - background-image 和相關屬性
 - 4-3: 圖片適配填滿 - object-fit: cover 的實際應用
 - 4-4: 圖片適配縮放 - object-fit: contain 的使用場景  
-- 4-5: 響應式圖片 - Bootstrap .img-fluid 類別實作
 
 ---
 
