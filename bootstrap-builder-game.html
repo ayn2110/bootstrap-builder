@@ -50,6 +50,13 @@
                     <div class="hint-section" id="hintSection">
                         使用 <code>.container</code> 類別來創建一個響應式固定寬度的容器。
                     </div>
+                    <div class="manual-section" id="manualSection" style="margin-top: 15px; display: none;">
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
+                            <div style="font-weight: bold; color: #495057; margin-bottom: 8px;">📚 Bootstrap 官方手冊</div>
+                            <div style="font-size: 0.9em; color: #6c757d; margin-bottom: 10px;" id="pageTitle">容器說明頁面</div>
+                            <a id="pageLink" href="#" target="_blank" style="color: #007bff; text-decoration: none; font-size: 0.9em;">📖 查看官方文檔 →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -64,7 +71,9 @@
                 <div class="section">
                     <div class="section-title">🎯 目標效果參考</div>
                     <div class="reference-image" id="referenceImage">
-                        參考設計圖片區域
+                        <a target="_blank" id="referenceLink">
+                            <img id="referenceImg" src="" alt="參考圖片" style="max-width: 100%; border-radius: 5px; display: none;">
+                        </a>
                     </div>
                 </div>
 
@@ -84,7 +93,11 @@
                 hint: '使用 <code>.container</code> 類別來創建一個響應式固定寬度的容器。',
                 htmlTemplate: '<div class="{{input1}}">\n  <p>這是容器內的內容</p>\n</div>',
                 inputs: [{placeholder: 'container', answer: 'container'}],
-                preview: '<div class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">這是容器內的內容</div>'
+                preview: '<div class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">這是容器內的內容</div>',
+                image: './images/1-1.png',
+                url: 'https://www.camacafe.com/New/',
+                pageTitle: 'Containers - 容器組件',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/containers/'
             },
             {
                 id: '1-2',
@@ -93,7 +106,11 @@
                 hint: '使用 <code>.container-fluid</code> 類別來創建一個全寬容器。',
                 htmlTemplate: '<div class="{{input1}}">\n  <div class="banner">橫幅廣告</div>\n</div>',
                 inputs: [{placeholder: 'container-fluid', answer: 'container-fluid'}],
-                preview: '<div class="{{class1}}" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; font-size: 1.5em;">橫幅廣告</div>'
+                preview: '<div class="{{class1}}" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; font-size: 1.5em;">橫幅廣告</div>',
+                image: 'https://via.placeholder.com/400x300?text=Container+Fluid',
+                url: 'https://getbootstrap.com/docs/5.3/layout/containers/',
+                pageTitle: 'Containers - 流體容器',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/containers/#fluid-containers'
             },
             {
                 id: '1-3',
@@ -102,7 +119,11 @@
                 hint: '使用 <code>.row</code> 類別來創建一個水平分欄容器。',
                 htmlTemplate: '<div class="container">\n  <div class="{{input1}}">\n    <div class="col">內容區塊</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'row', answer: 'row'}],
-                preview: '<div class="container"><div class="{{class1}}"><div class="col preview-element">內容區塊</div></div></div>'
+                preview: '<div class="container"><div class="{{class1}}"><div class="col preview-element">內容區塊</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Row+Layout',
+                url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
+                pageTitle: 'Grid System - 網格行',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#row-columns'
             },
             {
                 id: '1-4',
@@ -111,7 +132,11 @@
                 hint: '使用 <code>.col</code> 類別讓元素自動填充可用空間。',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">產品卡片</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品卡片</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品卡片</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Auto+Column',
+                url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
+                pageTitle: 'Columns - 自動欄位',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#auto-layout-columns'
             },
             {
                 id: '1-5',
@@ -120,7 +145,11 @@
                 hint: '在同一個 row 中使用兩次 <code>.col</code> 類別。',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">產品 A</div>\n    <div class="{{input1}}">產品 B</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品 A</div><div class="{{class1}} preview-element">產品 B</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">產品 A</div><div class="{{class1}} preview-element">產品 B</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Equal+Columns',
+                url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
+                pageTitle: 'Columns - 等寬欄位',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width'
             },
             {
                 id: '1-6',
@@ -129,7 +158,11 @@
                 hint: '在同一個 row 中使用三次 <code>.col</code> 類別。',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">服務 1</div>\n    <div class="{{input1}}">服務 2</div>\n    <div class="{{input1}}">服務 3</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">服務 1</div><div class="{{class1}} preview-element">服務 2</div><div class="{{class1}} preview-element">服務 3</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">服務 1</div><div class="{{class1}} preview-element">服務 2</div><div class="{{class1}} preview-element">服務 3</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Three+Columns',
+                url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
+                pageTitle: 'Columns - 多欄佈局',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width-multi-row'
             },
             {
                 id: '1-7',
@@ -138,7 +171,11 @@
                 hint: '在同一個 row 中使用五次 <code>.col</code> 類別。',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">步驟1</div>\n    <div class="{{input1}}">步驟2</div>\n    <div class="{{input1}}">步驟3</div>\n    <div class="{{input1}}">步驟4</div>\n    <div class="{{input1}}">步驟5</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟1</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟2</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟3</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟4</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟5</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟1</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟2</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟3</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟4</div><div class="{{class1}} preview-element" style="font-size: 0.8em;">步驟5</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Five+Columns',
+                url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
+                pageTitle: 'Columns - 多欄等分',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width'
             },
             {
                 id: '1-8',
@@ -150,7 +187,11 @@
                     {placeholder: 'col-8', answer: 'col-8'},
                     {placeholder: 'col-4', answer: 'col-4'}
                 ],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">主內容</div><div class="{{class2}} preview-element">側邊欄</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">主內容</div><div class="{{class2}} preview-element">側邊欄</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=8-4+Layout',
+                url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
+                pageTitle: 'Grid System - 固定欄寬',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#setting-one-column-width'
             },
             {
                 id: '1-9',
@@ -162,7 +203,11 @@
                     {placeholder: 'col-9', answer: 'col-9'},
                     {placeholder: 'col-3', answer: 'col-3'}
                 ],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">數據表格</div><div class="{{class2}} preview-element">操作按鈕</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="{{class1}} preview-element">數據表格</div><div class="{{class2}} preview-element">操作按鈕</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=9-3+Layout',
+                url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
+                pageTitle: 'Grid System - 不等分佈局',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#mix-and-match'
             },
             {
                 id: '2-1',
@@ -171,7 +216,11 @@
                 hint: '使用 <code>.mx-auto</code> 來設置左右外邊距為自動,實現水平居中。需要配合固定寬度的欄位如 <code>.col-6</code>。',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-6 {{input1}}">登入表單</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'mx-auto', answer: 'mx-auto'}],
-                preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Center+Horizontal',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
+                pageTitle: 'Spacing - 自動外邊距',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#horizontal-centering'
             },
             {
                 id: '2-2',
@@ -180,7 +229,11 @@
                 hint: '使用 <code>.pt-5</code> 來設置上內邊距為最大級別。',
                 htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">網站標題</h2>\n  <p>內容文字...</p>\n</div>',
                 inputs: [{placeholder: 'pt-5', answer: 'pt-5'}],
-                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding-left: 20px; padding-right: 20px; border-radius: 5px;">網站標題</h2><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">內容文字...</p></div>'
+                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding-left: 20px; padding-right: 20px; border-radius: 5px;">網站標題</h2><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">內容文字...</p></div>',
+                image: 'https://via.placeholder.com/400x300?text=Padding+Top',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
+                pageTitle: 'Spacing - 內邊距工具',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#how-it-works'
             },
             {
                 id: '2-3',
@@ -189,7 +242,11 @@
                 hint: '使用 <code>.mb-4</code> 來設置下外邊距。',
                 htmlTemplate: '<div class="container">\n  <div class="image-box {{input1}}">圖片區域</div>\n  <p>說明文字</p>\n</div>',
                 inputs: [{placeholder: 'mb-4', answer: 'mb-4'}],
-                preview: '<div class="container"><div class="{{class1}}" style="background: #667eea; color: white; padding: 40px; text-align: center; border-radius: 5px;">圖片區域</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">說明文字</p></div>'
+                preview: '<div class="container"><div class="{{class1}}" style="background: #667eea; color: white; padding: 40px; text-align: center; border-radius: 5px;">圖片區域</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">說明文字</p></div>',
+                image: 'https://via.placeholder.com/400x300?text=Margin+Bottom',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
+                pageTitle: 'Spacing - 外邊距工具',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#margin-and-padding'
             },
             {
                 id: '2-4',
@@ -198,7 +255,11 @@
                 hint: '使用 <code>.text-center</code> 來將文字置中對齊。',
                 htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">歡迎來到我們的網站</h2>\n</div>',
                 inputs: [{placeholder: 'text-center', answer: 'text-center'}],
-                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>'
+                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>',
+                image: 'https://via.placeholder.com/400x300?text=Text+Center',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/text/',
+                pageTitle: 'Text - 文字對齊',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/text/#text-alignment'
             },
             {
                 id: '2-5',
@@ -207,7 +268,11 @@
                 hint: '在 <code>.row</code> 上使用 <code>.align-items-center</code> 來垂直居中對齊所有子元素。',
                 htmlTemplate: '<div class="container">\n  <div class="row {{input1}}" style="min-height: 150px;">\n    <div class="col">圖標</div>\n    <div class="col">文字說明</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'align-items-center', answer: 'align-items-center'}],
-                preview: '<div class="container"><div class="row {{class1}}" style="min-height: 150px; background: #f8f9fa; border-radius: 5px;"><div class="col preview-element">圖標</div><div class="col preview-element">文字說明</div></div></div>'
+                preview: '<div class="container"><div class="row {{class1}}" style="min-height: 150px; background: #f8f9fa; border-radius: 5px;"><div class="col preview-element">圖標</div><div class="col preview-element">文字說明</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Vertical+Align',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/flex/',
+                pageTitle: 'Flex - 垂直對齊',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#align-items'
             },
             {
                 id: '2-6',
@@ -219,7 +284,11 @@
                     {placeholder: 'mt-3', answer: 'mt-3'},
                     {placeholder: 'px-4', answer: 'px-4'}
                 ],
-                preview: '<div class="container"><div class="{{class1}} {{class2}} preview-element">卡片內容</div></div>'
+                preview: '<div class="container"><div class="{{class1}} {{class2}} preview-element">卡片內容</div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Spacing+Combo',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
+                pageTitle: 'Spacing - 組合間距',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#examples'
             },
             {
                 id: '2-7',
@@ -228,7 +297,11 @@
                 hint: '在 <code>.row</code> 上使用 <code>.justify-content-around</code> 來均勻分佈元素。',
                 htmlTemplate: '<div class="container">\n  <div class="row {{input1}}">\n    <div class="col-auto">按鈕1</div>\n    <div class="col-auto">按鈕2</div>\n    <div class="col-auto">按鈕3</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'justify-content-around', answer: 'justify-content-around'}],
-                preview: '<div class="container"><div class="row {{class1}}"><div class="col-auto preview-element">按鈕1</div><div class="col-auto preview-element">按鈕2</div><div class="col-auto preview-element">按鈕3</div></div></div>'
+                preview: '<div class="container"><div class="row {{class1}}"><div class="col-auto preview-element">按鈕1</div><div class="col-auto preview-element">按鈕2</div><div class="col-auto preview-element">按鈕3</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Justify+Around',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/flex/',
+                pageTitle: 'Flex - 水平分佈',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#justify-content'
             },
             {
                 id: '3-1',
@@ -240,7 +313,11 @@
                     {placeholder: 'col-12', answer: 'col-12'},
                     {placeholder: 'col-md-6', answer: 'col-md-6'}
                 ],
-                preview: '<div class="container"><div class="row"><div class="{{class1}} {{class2}} preview-element">卡片 A</div><div class="{{class1}} {{class2}} preview-element">卡片 B</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="{{class1}} {{class2}} preview-element">卡片 A</div><div class="{{class1}} {{class2}} preview-element">卡片 B</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Responsive+Grid',
+                url: 'https://getbootstrap.com/docs/5.3/layout/breakpoints/',
+                pageTitle: 'Breakpoints - 響應式斷點',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints'
             },
             {
                 id: '3-2',
@@ -252,7 +329,11 @@
                     {placeholder: 'order-first', answer: 'order-first'},
                     {placeholder: 'order-md-last', answer: 'order-md-last'}
                 ],
-                preview: '<div class="container"><div class="row"><div class="col-12 col-md-8 preview-element">主內容</div><div class="col-12 col-md-4 {{class1}} {{class2}} preview-element">側邊欄</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="col-12 col-md-8 preview-element">主內容</div><div class="col-12 col-md-4 {{class1}} {{class2}} preview-element">側邊欄</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Flex+Order',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/flex/',
+                pageTitle: 'Flex - 元素順序',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#order'
             },
             {
                 id: '3-3',
@@ -261,7 +342,11 @@
                 hint: '使用 <code>.offset-3</code> 來向右偏移 3 欄。',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-6 {{input1}}">登入表單</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'offset-3', answer: 'offset-3'}],
-                preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>'
+                preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Column+Offset',
+                url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
+                pageTitle: 'Columns - 欄位位移',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#offsetting'
             },
             {
                 id: '3-4',
@@ -270,7 +355,11 @@
                 hint: '在 <code>.row</code> 上使用 <code>.g-0</code> 來移除所有間距。',
                 htmlTemplate: '<div class="container">\n  <div class="row {{input1}}">\n    <div class="col-4">圖片1</div>\n    <div class="col-4">圖片2</div>\n    <div class="col-4">圖片3</div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'g-0', answer: 'g-0'}],
-                preview: '<div class="container"><div class="row {{class1}}"><div class="col-4 preview-element" style="margin: 0;">圖片1</div><div class="col-4 preview-element" style="margin: 0;">圖片2</div><div class="col-4 preview-element" style="margin: 0;">圖片3</div></div></div>'
+                preview: '<div class="container"><div class="row {{class1}}"><div class="col-4 preview-element" style="margin: 0;">圖片1</div><div class="col-4 preview-element" style="margin: 0;">圖片2</div><div class="col-4 preview-element" style="margin: 0;">圖片3</div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Remove+Gutters',
+                url: 'https://getbootstrap.com/docs/5.3/layout/gutters/',
+                pageTitle: 'Gutters - 間距控制',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/gutters/#no-gutters'
             },
             {
                 id: '3-5',
@@ -282,7 +371,11 @@
                     {placeholder: 'd-none', answer: 'd-none'},
                     {placeholder: 'd-lg-block', answer: 'd-lg-block'}
                 ],
-                preview: '<div class="container"><div class="{{class1}} {{class2}} preview-element">日期選擇器</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">其他內容</p></div>'
+                preview: '<div class="container"><div class="{{class1}} {{class2}} preview-element">日期選擇器</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">其他內容</p></div>',
+                image: 'https://via.placeholder.com/400x300?text=Display+Utilities',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/display/',
+                pageTitle: 'Display - 顯示控制',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements'
             }
         ];
 
@@ -302,6 +395,32 @@
             document.getElementById('levelTitle').textContent = level.title;
             document.getElementById('levelDescription').textContent = level.description;
             document.getElementById('hintSection').innerHTML = level.hint;
+
+            // 顯示手冊連結
+            const manualSection = document.getElementById('manualSection');
+            const pageTitle = document.getElementById('pageTitle');
+            const pageLink = document.getElementById('pageLink');
+            
+            if (level.pageTitle && level.pageLink) {
+                manualSection.style.display = 'block';
+                pageTitle.textContent = level.pageTitle;
+                pageLink.href = level.pageLink;
+            } else {
+                manualSection.style.display = 'none';
+            }
+
+            // 顯示參考圖片
+            const referenceImg = document.getElementById('referenceImg');
+            const referenceLink = document.getElementById('referenceLink');
+            
+            if (level.image && level.url) {
+                referenceImg.src = level.image;
+                referenceImg.style.display = 'block';
+                referenceLink.href = level.url;
+            } else {
+                referenceImg.style.display = 'none';
+                referenceLink.href = '#';
+            }
 
             userInputs = level.inputs.map(() => '');
             renderCodeEditor();
