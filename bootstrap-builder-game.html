@@ -20,7 +20,7 @@
             <div class="progress-bar-container">
                 <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
             </div>
-            <p style="margin-top: 10px; font-size: 0.9em;">關卡進度: <span id="levelProgress">1 / 21</span></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">關卡進度: <span id="levelProgress">1 / 26</span></p>
         </div>
 
         <div class="main-content">
@@ -376,6 +376,65 @@
                 url: 'https://getbootstrap.com/docs/5.3/utilities/display/',
                 pageTitle: 'Display - 顯示控制',
                 pageLink: 'https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements'
+            },
+            {
+                id: '4-1',
+                title: '響應式圖片',
+                description: '使用 Bootstrap 內建的響應式圖片類別,讓圖片自動適應容器寬度。',
+                hint: '使用 <code>.img-fluid</code> 類別讓圖片具備響應式特性,相當於 CSS 的 max-width: 100% 和 height: auto。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-6">\n      <img src="https://via.placeholder.com/600x400/667eea/white?text=產品圖片" class="{{input1}}" alt="產品圖片">\n    </div>\n    <div class="col-md-6">\n      <h3>產品說明</h3>\n      <p>這是產品的詳細說明內容...</p>\n    </div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'img-fluid', answer: 'img-fluid'}],
+                preview: '<div class="container"><div class="row"><div class="col-md-6"><img src="https://placedog.net/600/600" class="{{class1}}"  alt="產品圖片"></div><div class="col-md-6 preview-element" style="display: flex; flex-direction: column; justify-content: center;"><h5>產品說明</h5><p style="margin: 0; font-size: 0.9em;">這是產品的詳細說明內容...</p></div></div></div>',
+                image: 'https://placedog.net/600/600',
+                url: 'https://getbootstrap.com/docs/5.3/content/images/',
+                pageTitle: 'Images - 響應式圖片',
+                pageLink: 'https://getbootstrap.com/docs/5.3/content/images/#responsive-images'
+            },
+            {
+                id: '4-2',
+                title: '背景圖片技術',
+                description: '使用 CSS background-image 替代 img 標籤,提供更好的圖片控制和佈局彈性。',
+                hint: '使用 <code>background-image</code>、<code>background-size: cover</code> 和 <code>background-position: center</code> 來實現完美的圖片顯示。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-4">\n      <div class="{{input1}}">\n        <div class="overlay-content">\n          <h4>產品標題</h4>\n          <p>產品描述</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'bg-image-card', answer: 'bg-image-card'},
+                ],
+                preview: '<div class="container"><div class="row"><div class="col-md-4"><div class="{{class1}}" style="background-image: url(\'https://placedog.net/400/300\'); "><div style="background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; border-radius: 0 0 10px 10px; width: 100%;"><h5 style="margin: 0; color: white;">產品標題</h5><p style="margin: 0; color: white; font-size: 0.9em;">產品描述</p></div></div></div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Background+Image',
+                url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/background-image',
+                pageTitle: 'Background Image - 背景圖片技術',
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/background-image'
+            },
+            {
+                id: '4-3',
+                title: 'Object-Fit 裁切',
+                description: '使用 object-fit 屬性控制圖片在容器中的顯示方式,解決圖片變形問題。',
+                hint: '使用 <code>object-fit: cover</code> 讓圖片填滿容器並保持比例,或使用 <code>object-fit: contain</code> 完整顯示圖片。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-3">\n      <div class="image-container" style="width: 100%; height: 200px; overflow: hidden; border-radius: 10px;">\n        <img src="https://via.placeholder.com/600x800/dc3545/white?text=Portrait" class="{{input1}}" style="{{input2}}" alt="">\n      </div>\n      <p class="mt-2 text-center">Object-fit: Cover</p>\n    </div>\n    <div class="col-md-3">\n      <div class="image-container" style="width: 100%; height: 200px; overflow: hidden; border-radius: 10px; background: #f8f9fa;">\n        <img src="https://via.placeholder.com/600x800/17a2b8/white?text=Portrait" style="width: 100%; height: 100%; object-fit: contain;" alt="">\n      </div>\n      <p class="mt-2 text-center">Object-fit: Contain</p>\n    </div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'img-cover', answer: 'img-cover'},
+                ],
+                preview: '<div class="container"><div class="row"><div class="col-md-6"><div style="width: 100%; height: 150px; overflow: hidden; border-radius: 10px;"><img src="https://placedog.net/600/600" class="{{class1}}"  alt=""></div><p class="text-center mt-2" style="font-size: 0.85em;">Object-fit: Cover</p></div><div class="col-md-6"><div style="width: 100%; height: 150px; overflow: hidden; border-radius: 10px; background: #f8f9fa; display: flex; align-items: center; justify-content: center;"><img src="https://placedog.net/600/600" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="示例"></div><p class="text-center mt-2" style="font-size: 0.85em;">Object-fit: Contain</p></div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Object+Fit',
+                url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/object-fit',
+                pageTitle: 'Object-fit - 圖片適應控制',
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/object-fit'
+            },
+            {
+                id: '4-4',
+                title: '固定比例容器',
+                description: '使用 CSS aspect-ratio 或 padding-bottom 技術創建固定比例的圖片容器。',
+                hint: '使用 <code>aspect-ratio: 16/9</code> 或傳統的 <code>padding-bottom</code> 百分比技術來維持固定的寬高比例。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-6">\n      <div class="{{input1}}" style="{{input2}}">\n        <img src="https://via.placeholder.com/1600x900/6f42c1/white?text=16:9+Ratio" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9 比例圖片">\n      </div>\n      <p class="mt-2 text-center">16:9 比例</p>\n    </div>\n    <div class="col-md-6">\n      <div style="aspect-ratio: 1/1; overflow: hidden; border-radius: 10px;">\n        <img src="https://via.placeholder.com/800x800/e83e8c/white?text=1:1+Square" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" alt="1:1 比例圖片">\n      </div>\n      <p class="mt-2 text-center">1:1 比例 (正方形)</p>\n    </div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'ratio-container', answer: 'ratio-container'},
+                    {placeholder: 'aspect-ratio: 16/9; overflow: hidden; border-radius: 10px;', answer: 'aspect-ratio: 16/9; overflow: hidden; border-radius: 10px;'}
+                ],
+                preview: '<div class="container"><div class="row"><div class="col-md-6"><div class="{{class1}}" style="{{class2}}"><img src="https://placedog.net/1920/1080" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9"></div><p class="text-center mt-2" style="font-size: 0.85em;">16:9 比例</p></div><div class="col-md-6"><div style="aspect-ratio: 1/1; overflow: hidden; border-radius: 10px;"><img src="https://placedog.net/1920/1080" style="width: 100%; height: 100%; object-fit: cover;" alt="1:1"></div><p class="text-center mt-2" style="font-size: 0.85em;">1:1 比例</p></div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Aspect+Ratio',
+                url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/aspect-ratio',
+                pageTitle: 'Aspect-ratio - 固定比例技術',
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/aspect-ratio'
             }
         ];
 
@@ -560,10 +619,10 @@
                 </div>
                 <div style="padding: 60px; text-align: center;">
                     <div style="font-size: 5em; margin-bottom: 20px;">🏆</div>
-                    <h2 style="color: #667eea; margin-bottom: 20px;">Bootstrap 大師誕生!</h2>
+                    <h2 style="color: #667eea; margin-bottom: 20px;">Bootstrap 與 CSS 圖片大師誕生!</h2>
                     <p style="font-size: 1.2em; color: #6c757d; max-width: 600px; margin: 0 auto 40px;">
-                        你已經掌握了 Bootstrap 網格系統的核心概念,包括容器、行列、響應式設計和間距控制。
-                        現在你可以自信地使用 Bootstrap 來建立專業的網頁佈局了!
+                        你已經掌握了 Bootstrap 網格系統的核心概念,包括容器、行列、響應式設計、間距控制以及圖片處理技術。
+                        現在你可以自信地使用 Bootstrap 和現代 CSS 來建立專業且美觀的網頁佈局了!
                     </p>
                     <button class="btn-custom btn-check" onclick="location.reload()" style="max-width: 300px; margin: 0 auto;">
                         🔄 重新開始挑戰
@@ -623,6 +682,17 @@
                         <a href="#" onclick="jumpToLevel(18)" class="menu-item" data-level="3-3">3-3 欄位位移</a>
                         <a href="#" onclick="jumpToLevel(19)" class="menu-item" data-level="3-4">3-4 消除間距</a>
                         <a href="#" onclick="jumpToLevel(20)" class="menu-item" data-level="3-5">3-5 特定隱藏</a>
+                    </div>
+                </div>
+
+                <!-- 主題四：圖片處理附錄 -->
+                <div class="menu-section">
+                    <div class="section-header">主題四：圖片處理附錄</div>
+                    <div class="menu-items">
+                        <a href="#" onclick="jumpToLevel(21)" class="menu-item" data-level="4-1">4-1 響應式圖片</a>
+                        <a href="#" onclick="jumpToLevel(22)" class="menu-item" data-level="4-2">4-2 背景圖片技術</a>
+                        <a href="#" onclick="jumpToLevel(23)" class="menu-item" data-level="4-3">4-3 Object-Fit 裁切</a>
+                        <a href="#" onclick="jumpToLevel(24)" class="menu-item" data-level="4-4">4-4 固定比例容器</a>
                     </div>
                 </div>
             </div>
