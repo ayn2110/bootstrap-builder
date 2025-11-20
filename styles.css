@@ -115,6 +115,9 @@
         .code-line {
             margin: 5px 0;
             line-height: 1.8;
+            /* 保留原始的空白與縮排，讓編輯器在瀏覽器中顯示巢狀結構 */
+            white-space: pre-wrap;
+            tab-size: 4;
         }
 
         .code-input {
