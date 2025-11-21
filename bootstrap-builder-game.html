@@ -153,15 +153,15 @@
                 id: '1-5',
                 title: '通用類別',
                 description: '為區塊添加背景顏色，以便更清楚地看到範圍。',
-                hint: '使用 <code>bg-primary</code> 類別來設置藍色背景。',
-                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col {{input1}}">有背景色的區塊</div>\n  </div>\n</div>',
-                inputs: [{placeholder: 'bg-primary', answer: 'bg-primary'}],
-                preview: '<div class="container"><div class="row"><div class="col {{class1}} text-white p-3">有背景色的區塊</div></div></div>',
+                hint: '使用 <code>bg-white</code> 類別來設置白色背景。',
+                htmlTemplate: '<div class="container bg-primary">\n  <div class="row">\n    <div class="col {{input1}}">內容</div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'bg-white', answer: 'bg-white'}],
+                preview: '<div class="container bg-primary p-3"><div class="row"><div class="col {{class1}} p-3">內容</div></div></div>',
                 image: 'https://via.placeholder.com/400x300?text=Utility+Classes',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/background/',
                 pageTitle: 'Utilities - 背景顏色',
                 pageLink: 'https://getbootstrap.com/docs/5.3/utilities/background/',
-                cssRule: '.bg-primary {\n  --bs-bg-opacity: 1;\n  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;\n}'
+                cssRule: '.bg-white {\n  --bs-bg-opacity: 1;\n  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;\n}'
             },
             {
                 id: '1-6',
@@ -497,7 +497,7 @@
                 id: '4-2',
                 title: '背景圖片技術',
                 description: '使用 CSS background-image 替代 img 標籤,提供更好的圖片控制和佈局彈性。',
-                hint: '使用 <code>background-image</code>、<code>background-size: cover</code> 和 <code>background-position: center</code> 來實現完美的圖片顯示。',
+                hint: '使用 <code>background-image</code>、<code>background-size: cover</code> 和 <code>background-position: center</code> 來實現完美的圖片顯示。(此為自定義樣式 非Bootstrap class)',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-4">\n      <div class="{{input1}}">\n        <div class="overlay-content">\n          <h4>產品標題</h4>\n          <p>產品描述</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>',
                 inputs: [
                     {placeholder: 'bg-image-card', answer: 'bg-image-card'},
@@ -513,7 +513,7 @@
                 id: '4-3',
                 title: 'Object-Fit 裁切',
                 description: '使用 object-fit 屬性控制圖片在容器中的顯示方式,解決圖片變形問題。',
-                hint: '使用 <code>object-fit: cover</code> 讓圖片填滿容器並保持比例,或使用 <code>object-fit: contain</code> 完整顯示圖片。',
+                hint: '使用 <code>object-fit: cover</code> 讓圖片填滿容器並保持比例,或使用 <code>object-fit: contain</code> 完整顯示圖片。(此為自定義樣式 非Bootstrap class)',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-3">\n      <div class="image-container" style="width: 100%; height: 200px; overflow: hidden; border-radius: 10px;">\n        <img src="https://via.placeholder.com/600x800/dc3545/white?text=Portrait" class="{{input1}}" style="{{input2}}" alt="">\n      </div>\n      <p class="mt-2 text-center">Object-fit: Cover</p>\n    </div>\n    <div class="col-md-3">\n      <div class="image-container" style="width: 100%; height: 200px; overflow: hidden; border-radius: 10px; background: #f8f9fa;">\n        <img src="https://via.placeholder.com/600x800/17a2b8/white?text=Portrait" style="width: 100%; height: 100%; object-fit: contain;" alt="">\n      </div>\n      <p class="mt-2 text-center">Object-fit: Contain</p>\n    </div>\n  </div>\n</div>',
                 inputs: [
                     {placeholder: 'img-cover', answer: 'img-cover'},
@@ -528,19 +528,160 @@
             {
                 id: '4-4',
                 title: '固定比例容器',
-                description: '使用 CSS aspect-ratio 或 padding-bottom 技術創建固定比例的圖片容器。',
-                hint: '使用 <code>aspect-ratio: 16/9</code> 或傳統的 <code>padding-bottom</code> 百分比技術來維持固定的寬高比例。',
-                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-6">\n      <div class="{{input1}}" style="{{input2}}">\n        <img src="https://via.placeholder.com/1600x900/6f42c1/white?text=16:9+Ratio" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9 比例圖片">\n      </div>\n      <p class="mt-2 text-center">16:9 比例</p>\n    </div>\n    <div class="col-md-6">\n      <div style="aspect-ratio: 1/1; overflow: hidden; border-radius: 10px;">\n        <img src="https://via.placeholder.com/800x800/e83e8c/white?text=1:1+Square" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" alt="1:1 比例圖片">\n      </div>\n      <p class="mt-2 text-center">1:1 比例 (正方形)</p>\n    </div>\n  </div>\n</div>',
+                description: '使用 padding-bottom 技術創建固定比例的圖片容器。',
+                hint: '使用 <code>padding-bottom</code> 百分比技術來維持固定的寬高比例。(此為自定義樣式 非Bootstrap class)',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-6">\n      <div class="{{input1}}" style="{{input2}}">\n        <img src="https://via.placeholder.com/1600x900/6f42c1/white?text=16:9+Ratio" class="img-fluid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9 比例圖片">\n      </div>\n      <p class="mt-2 text-center">16:9 比例</p>\n    </div>\n  </div>\n</div>',
                 inputs: [
                     {placeholder: 'ratio-container', answer: 'ratio-container'},
-                    {placeholder: 'aspect-ratio: 16/9; overflow: hidden; border-radius: 10px;', answer: 'aspect-ratio: 16/9; overflow: hidden; border-radius: 10px;'}
+                    {placeholder: 'padding-bottom: 56.25%; position: relative;', answer: 'padding-bottom: 56.25%; position: relative;'}
                 ],
-                preview: '<div class="container"><div class="row"><div class="col-md-6"><div class="{{class1}}" style="{{class2}}"><img src="https://placedog.net/1920/1080" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9"></div><p class="text-center mt-2" style="font-size: 0.85em;">16:9 比例</p></div><div class="col-md-6"><div style="aspect-ratio: 1/1; overflow: hidden; border-radius: 10px;"><img src="https://placedog.net/1920/1080" style="width: 100%; height: 100%; object-fit: cover;" alt="1:1"></div><p class="text-center mt-2" style="font-size: 0.85em;">1:1 比例</p></div></div></div>',
+                preview: '<div class="container"><div class="row"><div class="col-md-6"><div class="{{class1}}" style="{{class2}}"><img src="https://placedog.net/1920/1080" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9"></div><p class="text-center mt-2" style="font-size: 0.85em;">16:9 比例</p></div></div></div>',
                 image: 'https://via.placeholder.com/400x300?text=Aspect+Ratio',
-                url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/aspect-ratio',
-                pageTitle: 'Aspect-ratio - 固定比例技術',
-                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/aspect-ratio',
-                cssRule: '/* CSS Aspect Ratio */\naspect-ratio: 16 / 9;'
+                url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/padding-bottom',
+                pageTitle: 'Padding Bottom - 固定比例技術',
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/padding-bottom',
+                cssRule: '/* CSS Aspect Ratio Hack */\n.ratio-container {\n  position: relative;\n  width: 100%;\n}\n/* padding-bottom: 56.25% = 9/16 */'
+            },
+            {
+                id: '5-1',
+                title: '表單基礎',
+                description: '了解原生 HTML 表單結構，使用 form 標籤包裹輸入元件。',
+                hint: '使用 <code>form</code> 標籤包裹內容，並包含 <code>input</code> 和 <code>button</code>。',
+                htmlTemplate: '<div class="container">\n  <{{input1}}>\n    <label>Email:</label>\n    <input type="email">\n    <button type="submit">送出</button>\n  </{{input1}}>\n</div>',
+                inputs: [{placeholder: 'form', answer: 'form'}],
+                preview: '<div class="container"><form><label>Email:</label> <input type="email"> <button type="submit">送出</button></form></div>',
+                image: 'https://via.placeholder.com/400x300?text=Form+Basics',
+                url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/form',
+                pageTitle: 'HTML Forms',
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/form',
+                cssRule: 'form {\n  display: block;\n  margin-top: 0em;\n}'
+            },
+            {
+                id: '5-2',
+                title: '標籤關聯',
+                description: '使用 for 屬性將 label 與 input 關聯，這對於無障礙訪問（Accessibility）非常重要。',
+                hint: '<code>label</code> 的 <code>for</code> 屬性值必須與 <code>input</code> 的 <code>id</code> 屬性值完全一致。',
+                htmlTemplate: '<div class="container">\n  <form>\n    <label {{input1}}="user-email">Email:</label>\n    <input type="email" {{input2}}="user-email">\n  </form>\n</div>',
+                inputs: [
+                    {placeholder: 'for', answer: 'for'},
+                    {placeholder: 'id', answer: 'id'}
+                ],
+                preview: '<div class="container"><form><label for="user-email">Email:</label> <input type="email" id="user-email"></form></div>',
+                image: 'https://via.placeholder.com/400x300?text=Label+For+ID',
+                url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/label',
+                pageTitle: 'HTML Label',
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/label',
+                cssRule: '/* Clicking label focuses input */'
+            },
+            {
+                id: '5-3',
+                title: '資料傳送',
+                description: 'name 屬性是後端接收資料的關鍵，沒有 name 的 input 資料不會被送出。',
+                hint: '為 input 設定 <code>name</code> 屬性，例如 <code>name="username"</code>。',
+                htmlTemplate: '<div class="container">\n  <form>\n    <label for="username">使用者名稱:</label>\n    <input type="text" id="username" {{input1}}="username">\n  </form>\n</div>',
+                inputs: [{placeholder: 'name', answer: 'name'}],
+                preview: '<div class="container"><form><label for="username">使用者名稱:</label> <input type="text" id="username" name="username"></form></div>',
+                image: 'https://via.placeholder.com/400x300?text=Input+Name',
+                url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/input#name',
+                pageTitle: 'Input Name Attribute',
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/input#name',
+                cssRule: '/* name attribute is for form submission */'
+            },
+            {
+                id: '5-4',
+                title: '表單樣式',
+                description: '套用 Bootstrap 的標準表單樣式，讓表單看起來更專業。',
+                hint: '為 label 加上 <code>form-label</code>，為 input 加上 <code>form-control</code>。',
+                htmlTemplate: '<div class="container">\n  <form>\n    <div class="mb-3">\n      <label for="exampleInput" class="{{input1}}">Email address</label>\n      <input type="email" class="{{input2}}" id="exampleInput">\n    </div>\n  </form>\n</div>',
+                inputs: [
+                    {placeholder: 'form-label', answer: 'form-label'},
+                    {placeholder: 'form-control', answer: 'form-control'}
+                ],
+                preview: '<div class="container"><form><div class="mb-3"><label for="exampleInput" class="{{class1}}">Email address</label><input type="email" class="{{class2}}" id="exampleInput"></div></form></div>',
+                image: 'https://via.placeholder.com/400x300?text=Bootstrap+Form',
+                url: 'https://getbootstrap.com/docs/5.3/forms/overview/',
+                pageTitle: 'Forms - Overview',
+                pageLink: 'https://getbootstrap.com/docs/5.3/forms/overview/',
+                cssRule: '.form-control {\n  display: block;\n  width: 100%;\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: var(--bs-body-color);\n  background-color: var(--bs-body-bg);\n  background-clip: padding-box;\n  border: var(--bs-border-width) solid var(--bs-border-color);\n  border-radius: var(--bs-border-radius);\n}'
+            },
+            {
+                id: '5-5',
+                title: '下拉選單',
+                description: '美化 Select 元素並設定禁用狀態。',
+                hint: '使用 <code>form-select</code> 類別。若要禁用選項，請在 option 上加上 <code>disabled</code>。',
+                htmlTemplate: '<div class="container">\n  <select class="{{input1}}" aria-label="Default select example">\n    <option selected>Open this select menu</option>\n    <option value="1">One</option>\n    <option value="2">Two</option>\n    <option value="3" {{input2}}>Three (Disabled)</option>\n  </select>\n</div>',
+                inputs: [
+                    {placeholder: 'form-select', answer: 'form-select'},
+                    {placeholder: 'disabled', answer: 'disabled'}
+                ],
+                preview: '<div class="container"><select class="{{class1}}" aria-label="Default select example"><option selected>Open this select menu</option><option value="1">One</option><option value="2">Two</option><option value="3" {{class2}}>Three (Disabled)</option></select></div>',
+                image: 'https://via.placeholder.com/400x300?text=Form+Select',
+                url: 'https://getbootstrap.com/docs/5.3/forms/select/',
+                pageTitle: 'Forms - Select',
+                pageLink: 'https://getbootstrap.com/docs/5.3/forms/select/',
+                cssRule: '.form-select {\n  display: block;\n  width: 100%;\n  padding: 0.375rem 2.25rem 0.375rem 0.75rem;\n  -moz-padding-start: calc(0.75rem - 3px);\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5;\n  color: var(--bs-body-color);\n  background-color: var(--bs-body-bg);\n  border: var(--bs-border-width) solid var(--bs-border-color);\n  border-radius: var(--bs-border-radius);\n}'
+            },
+            {
+                id: '5-6',
+                title: '核取與單選',
+                description: '自定義 Checkbox 和 Radio 樣式。',
+                hint: 'input 使用 <code>form-check-input</code>，label 使用 <code>form-check-label</code>，外層包 <code>form-check</code>。',
+                htmlTemplate: '<div class="container">\n  <div class="form-check">\n    <input class="{{input1}}" type="checkbox" value="" id="flexCheckDefault">\n    <label class="form-check-label" for="flexCheckDefault">\n      Default checkbox\n    </label>\n  </div>\n</div>',
+                inputs: [{placeholder: 'form-check-input', answer: 'form-check-input'}],
+                preview: '<div class="container"><div class="form-check"><input class="{{class1}}" type="checkbox" value="" id="flexCheckDefault"><label class="form-check-label" for="flexCheckDefault">Default checkbox</label></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Checks+Radios',
+                url: 'https://getbootstrap.com/docs/5.3/forms/checks-radios/',
+                pageTitle: 'Forms - Checks & radios',
+                pageLink: 'https://getbootstrap.com/docs/5.3/forms/checks-radios/',
+                cssRule: '.form-check-input {\n  width: 1em;\n  height: 1em;\n  margin-top: 0.25em;\n  vertical-align: top;\n  background-color: #fff;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: contain;\n  border: 1px solid rgba(0, 0, 0, 0.25);\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  -webkit-print-color-adjust: exact;\n  color-adjust: exact;\n}'
+            },
+            {
+                id: '5-7',
+                title: '輸入群組',
+                description: '製作商品數量增減器 (- 1 +)。',
+                hint: '使用 <code>input-group</code> 包裹按鈕和輸入框，讓它們排列在同一行並緊密連接。',
+                htmlTemplate: '<div class="container">\n  <div class="{{input1}}">\n    <button class="btn btn-outline-secondary" type="button">-</button>\n    <input type="text" class="form-control text-center" value="1">\n    <button class="btn btn-outline-secondary" type="button">+</button>\n  </div>\n</div>',
+                inputs: [{placeholder: 'input-group', answer: 'input-group'}],
+                preview: '<div class="container"><div class="{{class1}}"><button class="btn btn-outline-secondary" type="button">-</button><input type="text" class="form-control text-center" value="1"><button class="btn btn-outline-secondary" type="button">+</button></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Input+Group',
+                url: 'https://getbootstrap.com/docs/5.3/forms/input-group/',
+                pageTitle: 'Forms - Input group',
+                pageLink: 'https://getbootstrap.com/docs/5.3/forms/input-group/',
+                cssRule: '.input-group {\n  position: relative;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: stretch;\n  width: 100%;\n}'
+            },
+            {
+                id: '5-8',
+                title: '水平表單',
+                description: '利用 Grid System 排列標籤與輸入框，製作水平排列的表單。',
+                hint: 'Label 佔 <code>col-2</code>，Input 容器佔 <code>col-10</code>。',
+                htmlTemplate: '<div class="container">\n  <div class="row mb-3">\n    <label for="colFormLabel" class="{{input1}} col-form-label">Email</label>\n    <div class="{{input2}}">\n      <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">\n    </div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'col-2', answer: 'col-2'},
+                    {placeholder: 'col-10', answer: 'col-10'}
+                ],
+                preview: '<div class="container"><div class="row mb-3"><label for="colFormLabel" class="{{class1}} col-form-label">Email</label><div class="{{class2}}"><input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label"></div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Horizontal+Form',
+                url: 'https://getbootstrap.com/docs/5.3/forms/layout/#horizontal-form',
+                pageTitle: 'Forms - Layout',
+                pageLink: 'https://getbootstrap.com/docs/5.3/forms/layout/#horizontal-form',
+                cssRule: '.col-form-label {\n  padding-top: calc(0.375rem + 1px);\n  padding-bottom: calc(0.375rem + 1px);\n  margin-bottom: 0;\n  font-size: inherit;\n  line-height: 1.5;\n}'
+            },
+            {
+                id: '5-9',
+                title: '表單驗證',
+                description: '啟用 Bootstrap 的驗證樣式。',
+                hint: '在 form 加上 <code>was-validated</code> 類別 (模擬驗證後狀態) 並在 input 加上 <code>required</code> 屬性。',
+                htmlTemplate: '<div class="container">\n  <form class="{{input1}}">\n    <div class="mb-3">\n      <label for="validationTextarea" class="form-label">Textarea</label>\n      <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" {{input2}}></textarea>\n      <div class="invalid-feedback">\n        Please enter a message in the textarea.\n      </div>\n    </div>\n  </form>\n</div>',
+                inputs: [
+                    {placeholder: 'was-validated', answer: 'was-validated'},
+                    {placeholder: 'required', answer: 'required'}
+                ],
+                preview: '<div class="container"><form class="{{class1}}"><div class="mb-3"><label for="validationTextarea" class="form-label">Textarea</label><textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" {{class2}}></textarea><div class="invalid-feedback">Please enter a message in the textarea.</div></div></form></div>',
+                image: 'https://via.placeholder.com/400x300?text=Form+Validation',
+                url: 'https://getbootstrap.com/docs/5.3/forms/validation/',
+                pageTitle: 'Forms - Validation',
+                pageLink: 'https://getbootstrap.com/docs/5.3/forms/validation/',
+                cssRule: '.was-validated .form-control:invalid, .form-control.is-invalid {\n  border-color: var(--bs-form-invalid-border-color);\n  padding-right: calc(1.5em + 0.75rem);\n  background-image: url(...);\n  background-repeat: no-repeat;\n  background-position: right calc(0.375em + 0.1875rem) center;\n  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);\n}'
             }
         ];
 
@@ -756,7 +897,8 @@
                 '1': '主題一：網格系統與排版基礎',
                 '2': '主題二：間距與對齊',
                 '3': '主題三：響應式設計',
-                '4': '主題四：圖片處理附錄'
+                '4': '主題四：圖片處理附錄',
+                '5': '主題五：表單設計'
             };
 
             const sections = {};

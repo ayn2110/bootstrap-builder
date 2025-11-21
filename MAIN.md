@@ -17,21 +17,20 @@ js掛載於</body>前
 | 關卡 | 標題 | 答案 (Class) | 說明 |參考網址 |
 | :--- | :--- | :--- | :--- |
 | 1-1 | 容器邊界 | container | 將內容放置於一個標準的響應式容器中，使其在頁面兩側保留適當的邊距。 |https://www.camacafe.com/New/|
-| 1-2 | 全寬內容 | container-fluid | 將橫幅廣告 (Banner) 延伸至螢幕兩側邊緣，實現滿版效果。 |
-| 1-3 | 啟動分欄 | row | 在容器中創建一個新的水平區塊，準備進行內容分欄。 |
-| 1-4 | 自動填充 | col | 將一個元件放入 row 中，讓它自動佔滿所有可用空間 (單一區塊)。 |
-|*1-4後補充|通用類別 |bg-primary|設定背景顏色|
-| 1-5 | 通用類別 | bg-primary | 設定背景顏色 |
+| 1-2 | 全寬內容 | container-fluid | 將橫幅廣告 (Banner) 延伸至螢幕兩側邊緣，實現滿版效果。 |https://www.nintendo.com/tw/switch2/index.html|
+| 1-3 | 啟動分欄 | row | 在容器中創建一個新的水平區塊，準備進行內容分欄。 |不顯示目標效果參考
+| 1-4 | 自動填充 | col | 將一個元件放入 row 中，讓它自動佔滿所有可用空間 (單一區塊)。 |https://www.starbucks.com.tw/home/index.jspx|不顯示目標效果參考
+| 1-5 | 通用類別 | bg-white | 設定背景顏色，觀察容器與內容的差異。 |https://www.creatures.co.jp/
 | 1-6 | 雙欄對等 | col | 將兩個產品卡片放入 row 中，讓它們平均分配為兩個等寬區塊。直接在 col 上設定背景色，觀察與下一關的差異。 |https://www.dintaifung.com.tw/|
-| 1-7 | 多包一層 | col | 了解 Grid System 的運作原理：col 本身有預設的 padding (gutter)，若要讓內容有背景色且不貼齊邊界，應在 col 內多包一層。 |
-| 1-8 | 三欄佈局 | col | 將三個服務圖標放入 row 中，平均分成三個等寬區塊。 |
-| 1-9 | 五等份挑戰 | col | 將五個步驟說明放入 row 中，讓它們等寬並排。 |
-| 1-10 | 多筆資料 | col-4 | 若要呈現第二列以後的資料，可以使用 col-* 固定區塊寬度 |
+| 1-7 | 多包一層 | col | 了解 Grid System 的運作原理：col 本身有預設的 padding (gutter)，若要讓內容有背景色且不貼齊邊界，應在 col 內多包一層。 |https://www.coldstone.com.tw/product/seasonal.html|
+| 1-8 | 三欄佈局 | col | 將三個服務圖標放入 row 中，平均分成三個等寬區塊。 |https://www.umai.tw/|
+| 1-9 | 五等份挑戰 | col | 將五個步驟說明放入 row 中，讓它們等寬並排。 |https://tm.ccl.ttct.edu.tw/|
+| 1-10 | 多筆資料 | col-4 | 若要呈現第二列以後的資料，可以使用 col-* 固定區塊寬度 |https://www.crun.com.tw/news.php?act=list&cid=1|
 | 1-11 | 左窄右寬 | col-4, col-8 | 創建一個左側較窄、右側較寬的佈局：左側佔 4 欄，右側佔 8 欄。 |https://www.mos.com.tw/member/activity.html|
-| 1-12 | 左寬右窄 | col-7, col-5 | 創建管理者後台常見的佈局：主要數據表格佔 7 欄，操作按鈕區佔 5 欄。 |
-| 1-13 | 若超過12 | col | 觀察當使用自動欄位 (col) 數量過多時的行為。 |
-| 1-14 | 若加總超過12 | col-4, col-9 | 當指定寬度的欄位加總超過 12 時，多出的欄位會自動換行。 |
-| 1-15 | 巢狀網格 | col-4, col-8, col-6 | 在欄位中可以再放入一個 row，實現更細緻的佈局。 |
+| 1-12 | 左寬右窄 | col-7, col-5 | 創建管理者後台常見的佈局：主要數據表格佔 7 欄，操作按鈕區佔 5 欄。 |https://www.chimeimuseum.org/special-exhibition/68a68f0a422a6/68a68fa1d1a3b|
+| 1-13 | 若超過12 | col | 觀察當使用自動欄位 (col) 數量過多時的行為。 |不顯示目標效果參考
+| 1-14 | 若加總超過12 | col-4, col-9 | 當指定寬度的欄位加總超過 12 時，多出的欄位會自動換行。 |不顯示目標效果參考
+| 1-15 | 巢狀網格 | col-4, col-8, col-6 | 在欄位中可以再放入一個 row，實現更細緻的佈局。 |https://kpmc.com.tw/program/|
 
 
 ### 主題二：間距與對齊
@@ -59,7 +58,20 @@ js掛載於</body>前
 | 4-1 | 響應式圖片 | img-fluid | 使用 Bootstrap 內建的響應式圖片類別，讓圖片自動適應容器寬度。 |
 | 4-2 | 背景圖片技術 | bg-image-card | 使用 CSS background-image 替代 img 標籤，提供更好的圖片控制和佈局彈性。 |
 | 4-3 | Object-Fit 裁切 | img-cover | 使用 object-fit 屬性控制圖片在容器中的顯示方式，解決圖片變形問題。 |
-| 4-4 | 固定比例容器 | ratio-container, aspect-ratio... | 使用 CSS aspect-ratio 或 padding-bottom 技術創建固定比例的圖片容器。 |
+| 4-4 | 固定比例容器 | ratio-container | 使用 padding-bottom 技術創建固定比例的圖片容器。 |
+
+### 主題五：表單設計
+| 關卡 | 標題 | 答案 (Class/Tag) | 說明 |
+| :--- | :--- | :--- | :--- |
+| 5-1 | 表單基礎 | form | 了解原生 HTML 表單結構，使用 form 標籤包裹輸入元件。 |
+| 5-2 | 標籤關聯 | for, id | 使用 for 屬性將 label 與 input 關聯，提升無障礙體驗。 |
+| 5-3 | 資料傳送 | name | name 屬性是後端接收資料的關鍵。 |
+| 5-4 | 表單樣式 | form-label, form-control | 套用 Bootstrap 的標準表單樣式。 |
+| 5-5 | 下拉選單 | form-select, disabled | 美化 Select 元素並設定禁用狀態。 |
+| 5-6 | 核取與單選 | form-check-input | 自定義 Checkbox 和 Radio 樣式。 |
+| 5-7 | 輸入群組 | input-group | 製作商品數量增減器 (- 1 +)。 |
+| 5-8 | 水平表單 | col-2, col-10 | 利用 Grid System 排列標籤與輸入框。 |
+| 5-9 | 表單驗證 | was-validated, required | 啟用 Bootstrap 的驗證樣式。 |
 
 ## 技術備註
 * 請用 modal 面板提示掛載 bootstrap css 和 js
@@ -82,6 +94,7 @@ js掛載於</body>前
 - [x] 實作間距與對齊關卡 (2-1 ~ 2-7)
 - [x] 實作響應式設計關卡 (3-1 ~ 3-5)
 - [x] 實作圖片處理附錄關卡 (4-1 ~ 4-4)
+- [x] 實作表單設計關卡 (5-1 ~ 5-9)
 - [x] 修正 1-6 關卡為不嵌套結構，以對比 1-7
 - [x] 調整 1-11 為左窄右寬 (col-4, col-8)
 - [x] 調整 1-12 為左寬右窄 (col-10, col-2)
