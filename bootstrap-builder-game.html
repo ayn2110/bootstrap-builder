@@ -592,7 +592,7 @@
                 title: '表單樣式',
                 description: '套用 Bootstrap 的標準表單樣式，讓表單看起來更專業。',
                 hint: '為 label 加上 <code>form-label</code>，為 input 加上 <code>form-control</code>。',
-                htmlTemplate: '<div class="container">\n  <form>\n    <div class="mb-3">\n      <label for="exampleInput" class="{{input1}}">Email address</label>\n      <input type="email" class="{{input2}}" id="exampleInput">\n    </div>\n  </form>\n</div>',
+                htmlTemplate: '<div class="container">\n  <form>\n    <div class="mb-3">\n      <label for="exampleInput" class="{{input1}}">Email:</label>\n      <input type="email" class="{{input2}}" id="exampleInput">\n    </div>\n  </form>\n</div>',
                 inputs: [
                     {placeholder: 'form-label', answer: 'form-label'},
                     {placeholder: 'form-control', answer: 'form-control'}
@@ -654,7 +654,7 @@
                 title: '水平表單',
                 description: '利用 Grid System 排列標籤與輸入框，製作水平排列的表單。',
                 hint: 'Label 佔 <code>col-2</code>，Input 容器佔 <code>col-10</code>。',
-                htmlTemplate: '<div class="container">\n  <div class="row mb-3">\n    <label for="colFormLabel" class="{{input1}} col-form-label">Email</label>\n    <div class="{{input2}}">\n      <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">\n    </div>\n  </div>\n</div>',
+                htmlTemplate: '<div class="container">\n  <div class="row mb-3">\n    <label for="colFormLabel" class="{{input1}}">Email</label>\n    <div class="{{input2}}">\n      <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">\n    </div>\n  </div>\n</div>',
                 inputs: [
                     {placeholder: 'col-2', answer: 'col-2'},
                     {placeholder: 'col-10', answer: 'col-10'}
@@ -669,7 +669,7 @@
             {
                 id: '5-9',
                 title: '驗證準備',
-                description: '表單驗證步驟 1：為 form 標籤添加 <code>needs-validation</code> 類別。',
+                description: '表單驗證步驟 1：為 form 標籤添加 needs-validation 類別。',
                 hint: '這是 Bootstrap 啟動自定義驗證樣式的標記類別。',
                 htmlTemplate: '<div class="container">\n  <form class="{{input1}}">\n    <!-- 表單內容 -->\n  </form>\n</div>',
                 inputs: [{placeholder: 'needs-validation', answer: 'needs-validation'}],
@@ -683,7 +683,7 @@
             {
                 id: '5-10',
                 title: '關閉預設',
-                description: '表單驗證步驟 2：添加 <code>novalidate</code> 屬性以關閉瀏覽器預設的驗證氣泡框。',
+                description: '表單驗證步驟 2：添加 novalidate 屬性以關閉瀏覽器預設的驗證氣泡框。',
                 hint: '這是一個布林屬性，不需要值。',
                 htmlTemplate: '<div class="container">\n  <form class="needs-validation" {{input1}}>\n    <!-- 表單內容 -->\n  </form>\n</div>',
                 inputs: [{placeholder: 'novalidate', answer: 'novalidate'}],
@@ -697,9 +697,9 @@
             {
                 id: '5-11',
                 title: '必填欄位',
-                description: '表單驗證步驟 3：在 input 上添加 <code>required</code> 屬性，標記此欄位為必填。',
+                description: '表單驗證步驟 3：在 input 上添加 required 屬性，標記此欄位為必填。',
                 hint: '這也是一個布林屬性。',
-                htmlTemplate: '<div class="container">\n  <form class="needs-validation" novalidate>\n    <label for="v1" class="form-label">姓名</label>\n    <input type="text" class="form-control" id="v1" {{input1}}>\n  </form>\n</div>',
+                htmlTemplate: '<div class="container">\n  <form class="needs-validation" novalidate>\n    <label for="user-name" class="form-label">姓名</label>\n    <input type="text" class="form-control" id="user-name" {{input1}}>\n  </form>\n</div>',
                 inputs: [{placeholder: 'required', answer: 'required'}],
                 preview: '<div class="container"><form class="needs-validation" novalidate><label for="v1" class="form-label">姓名</label><input type="text" class="form-control" id="v1" {{class1}}></form></div>',
                 image: 'https://via.placeholder.com/400x300?text=Validation+Step+3',
@@ -711,7 +711,7 @@
             {
                 id: '5-12',
                 title: '格式限制',
-                description: '表單驗證步驟 4：使用 HTML5 屬性如 <code>type="email"</code> 或 <code>minlength</code> 來觸發更具體的驗證。',
+                description: '表單驗證步驟 4：使用 HTML5 屬性如 type="email" 或 minlength 來觸發更具體的驗證。例如 type="email"、pattern="..."、minlength="..." 等，這些也會觸發瀏覽器的內建驗證邏輯。',
                 hint: '設定 <code>minlength="3"</code> 要求使用者至少輸入 3 個字元。',
                 htmlTemplate: '<div class="container">\n  <form class="needs-validation" novalidate>\n    <label for="v2" class="form-label">帳號</label>\n    <input type="text" class="form-control" id="v2" required {{input1}}="3">\n  </form>\n</div>',
                 inputs: [{placeholder: 'minlength', answer: 'minlength'}],
@@ -725,7 +725,7 @@
             {
                 id: '5-13',
                 title: '錯誤訊息',
-                description: '表單驗證步驟 5：添加 <code>.invalid-feedback</code> 區塊，這會在驗證失敗時顯示。',
+                description: '表單驗證步驟 5：添加 .invalid-feedback 區塊，這會在驗證失敗時顯示。',
                 hint: '將此 div 放在 input 下方。',
                 htmlTemplate: '<div class="container">\n  <form class="was-validated">\n    <input type="text" class="form-control" required>\n    <div class="{{input1}}">\n      請輸入內容。\n    </div>\n  </form>\n</div>',
                 inputs: [{placeholder: 'invalid-feedback', answer: 'invalid-feedback'}],
@@ -739,7 +739,7 @@
             {
                 id: '5-14',
                 title: '成功訊息',
-                description: '表單驗證步驟 6：添加 <code>.valid-feedback</code> 區塊，這會在驗證成功時顯示。',
+                description: '表單驗證步驟 6：添加 .valid-feedback 區塊，這會在驗證成功時顯示。',
                 hint: '將此 div 放在 input 下方。',
                 htmlTemplate: '<div class="container">\n  <form class="was-validated">\n    <input type="text" class="form-control" value="Good" required>\n    <div class="{{input1}}">\n      看起來很棒！\n    </div>\n  </form>\n</div>',
                 inputs: [{placeholder: 'valid-feedback', answer: 'valid-feedback'}],
@@ -753,9 +753,9 @@
             {
                 id: '5-15',
                 title: '啟用驗證',
-                description: '表單驗證步驟 7：使用 JavaScript 攔截送出事件，檢查有效性，並加上 <code>was-validated</code> 類別來顯示結果。',
+                description: '表單驗證步驟 7：使用 JavaScript 攔截送出事件，檢查有效性，並加上 was-validated 類別來顯示結果。',
                 hint: '在 JS 中，我們通常會執行 <code>form.classList.add(\'was-validated\')</code>。',
-                htmlTemplate: '<script>\n  // ...省略前面的監聽程式碼...\n  if (!form.checkValidity()) {\n    event.preventDefault()\n    event.stopPropagation()\n  }\n  form.classList.add("{{input1}}")\n<\/script>',
+                htmlTemplate: '<script>\n// Example starter JavaScript for disabling form submissions if there are invalid fields\n(() => {\n  \'use strict\'\n\n  // Fetch all the forms we want to apply custom Bootstrap validation styles to\n  const forms = document.querySelectorAll(\'.needs-validation\')\n\n  // Loop over them and prevent submission\n  Array.from(forms).forEach(form => {\n    form.addEventListener(\'submit\', event => {\n      if (!form.checkValidity()) {\n        event.preventDefault()\n        event.stopPropagation()\n      }\n\n      form.classList.add(\'{{input1}}\')\n    }, false)\n  })\n})()\n<\/script>',
                 inputs: [{placeholder: 'was-validated', answer: 'was-validated'}],
                 preview: '<div class="container"><div class="alert alert-info">此關卡模擬 JS 執行：<br><code>form.classList.add(\'{{class1}}\')</code></div></div>',
                 image: 'https://via.placeholder.com/400x300?text=Validation+Step+7',
