@@ -83,6 +83,15 @@ js掛載於</body>前
 | 5-14 | 成功訊息 | valid-feedback | 添加 .valid-feedback 區塊顯示成功訊息。 |
 | 5-15 | 啟用驗證 | was-validated | 使用 JavaScript 加上 was-validated 類別來顯示結果。 |
 
+### 主題六：定位與覆蓋
+| 關卡 | 標題 | 答案 (Class) | 說明 |
+| :--- | :--- | :--- | :--- |
+| 6-1 | 固定導覽列 | fixed-top | 將導覽列固定在視窗頂部，不隨頁面捲動而移動。 |
+| 6-2 | 回到上方按鈕 | position-fixed, bottom-0, end-0 | 製作一個固定在右下角的「回到上方」按鈕。 |
+| 6-3 | 徽章標記 | position-absolute, top-0, start-100, translate-middle | 將通知徽章 (Badge) 定位在按鈕的右上角邊緣。 |
+| 6-4 | 懸停覆蓋層 | position-relative, position-absolute | 製作卡片懸停時顯示的遮罩層 (Overlay)。 |
+| 6-5 | 全螢幕覆蓋 | position-fixed, top-0, bottom-0, start-0, end-0 | 製作全螢幕的遮罩層或 Loading 畫面。 |
+
 ## 技術備註
 * 請用 modal 面板提示掛載 bootstrap css 和 js
 * 每個關卡包含：
@@ -105,6 +114,7 @@ js掛載於</body>前
 - [x] 實作響應式設計關卡 (3-1 ~ 3-5)
 - [x] 實作圖片處理附錄關卡 (4-1 ~ 4-4)
 - [x] 實作表單設計關卡 (5-1 ~ 5-15)
+- [x] 實作定位與覆蓋關卡 (6-1 ~ 6-5)
 - [x] 修正 1-6 關卡為不嵌套結構，以對比 1-7
 - [x] 調整 1-11 為左窄右寬 (col-4, col-8)
 - [x] 調整 1-12 為左寬右窄 (col-10, col-2)
