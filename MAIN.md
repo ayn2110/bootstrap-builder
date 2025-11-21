@@ -125,6 +125,6 @@ js掛載於</body>前
 - [ ] 測試所有關卡流程與正確性
 
 ### 未完成 (Not Started)
-- [ ] 開啟 GitHub Pages 功能 (等關卡整理好後設定)
+- [x] 開啟 GitHub Pages 功能 (已建立 index.html，請至 GitHub Settings 設定)
 - [ ] 優化手機版顯示體驗
 - [ ] 增加更多進階 Bootstrap 元件關卡
