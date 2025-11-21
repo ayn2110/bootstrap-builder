@@ -785,7 +785,7 @@
                 hint: '使用 <code>.fixed-top</code> 類別 (或 <code>.position-fixed .top-0</code>)。',
                 htmlTemplate: '<div class="container" style="height: 200px; overflow-y: scroll; position: relative; border: 1px solid #ccc;">\n  <nav class="navbar navbar-dark bg-dark {{input1}}" style="width: 100%; z-index: 1000;">\n    <div class="container-fluid">\n      <span class="navbar-brand mb-0 h1">Fixed Navbar</span>\n    </div>\n  </nav>\n  <div style="padding-top: 60px;">\n    <p>向下捲動...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p>\n  </div>\n</div>',
                 inputs: [{placeholder: 'fixed-top', answer: 'fixed-top'}],
-                preview: '<div class="container" style="height: 200px; overflow-y: scroll; position: relative; border: 1px solid #ccc;"><nav class="navbar navbar-dark bg-dark {{class1}}" style="width: 100%; z-index: 1000; position: absolute;"><div class="container-fluid"><span class="navbar-brand mb-0 h1">Fixed Navbar</span></div></nav><div style="padding-top: 60px;"><p>向下捲動...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p></div></div>',
+                preview: '<div class="container" style="height: 200px; overflow-y: scroll; position: relative; border: 1px solid #ccc;"><div class="alert alert-warning">此關卡因 fixed-top 會影響整個頁面，故不提供即時預覽。請直接輸入答案。</div><nav class="navbar navbar-dark bg-dark" style="width: 100%; z-index: 1000; position: absolute;"><div class="container-fluid"><span class="navbar-brand mb-0 h1">Fixed Navbar</span></div></nav><div style="padding-top: 60px;"><p>向下捲動...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p></div></div>',
                 image: 'https://via.placeholder.com/400x300?text=Fixed+Navbar',
                 url: 'https://getbootstrap.com/docs/5.3/helpers/position/',
                 pageTitle: 'Position - Fixed Top',
@@ -814,14 +814,15 @@
                 id: '6-3',
                 title: '徽章標記',
                 description: '在按鈕角落放置通知徽章 (Absolute Badge)。',
-                hint: '父元素需有 <code>.position-relative</code>，徽章使用 <code>.position-absolute</code> 配合 <code>.top-0</code> / <code>.end-0</code>。',
-                htmlTemplate: '<div class="container text-center">\n  <button type="button" class="btn btn-primary position-relative">\n    Inbox\n    <span class="badge bg-danger {{input1}} {{input2}} {{input3}}">\n      99+\n    </span>\n  </button>\n</div>',
+                hint: '父元素需有 <code>.position-relative</code>，徽章使用 <code>.position-absolute</code> 配合 <code>.top-0</code> / <code>.start-100</code> / <code>.translate-middle</code>。',
+                htmlTemplate: '<div class="container text-center">\n  <button type="button" class="btn btn-primary position-relative">\n    Inbox\n    <span class="badge bg-danger {{input1}} {{input2}} {{input3}} {{input4}}">\n      99+\n    </span>\n  </button>\n</div>',
                 inputs: [
                     {placeholder: 'position-absolute', answer: 'position-absolute'},
                     {placeholder: 'top-0', answer: 'top-0'},
-                    {placeholder: 'end-0', answer: 'end-0'}
+                    {placeholder: 'start-100', answer: 'start-100'},
+                    {placeholder: 'translate-middle', answer: 'translate-middle'}
                 ],
-                preview: '<div class="container text-center"><button type="button" class="btn btn-primary position-relative">Inbox <span class="badge bg-danger {{class1}} {{class2}} {{class3}}">99+</span></button></div>',
+                preview: '<div class="container text-center"><button type="button" class="btn btn-primary position-relative">Inbox <span class="badge bg-danger {{class1}} {{class2}} {{class3}} {{class4}}">99+</span></button></div>',
                 image: 'https://via.placeholder.com/400x300?text=Badge+Position',
                 url: 'https://getbootstrap.com/docs/5.3/components/badges/#positioned',
                 pageTitle: 'Badges - Positioned',
@@ -838,7 +839,7 @@
                     {placeholder: 'position-relative', answer: 'position-relative'},
                     {placeholder: 'position-absolute', answer: 'position-absolute'}
                 ],
-                preview: '<div class="container"><div class="card {{class1}}" style="width: 18rem; overflow: hidden; position: relative;"><img src="https://placedog.net/300/200" class="card-img-top" alt="..."><div class="overlay {{class2}} w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(0,0,0,0.5); top: 0; left: 0; opacity: 0; transition: opacity 0.3s; position: absolute;"><span class="text-white">View Details</span></div></div><style>.card:hover .overlay { opacity: 1 !important; }</style></div>',
+                preview: '<div class="container"><div class="card {{class1}}" style="width: 18rem; overflow: hidden;"><img src="https://placedog.net/300/200" class="card-img-top" alt="..."><div class="overlay {{class2}} w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(0,0,0,0.5); top: 0; left: 0; opacity: 0; transition: opacity 0.3s;"><span class="text-white">View Details</span></div></div><style>.card:hover .overlay { opacity: 1 !important; }</style></div>',
                 image: 'https://via.placeholder.com/400x300?text=Hover+Overlay',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
                 pageTitle: 'Position - Overlay',
@@ -858,7 +859,7 @@
                     {placeholder: 'start-0', answer: 'start-0'},
                     {placeholder: 'end-0', answer: 'end-0'}
                 ],
-                preview: '<div class="container" style="position: relative; height: 200px; border: 1px solid #ddd;"><button class="btn btn-secondary">底層內容</button><div class="{{class1}} {{class2}} {{class3}} {{class4}} {{class5}} bg-dark opacity-50" style="z-index: 1050; position: absolute;"></div></div>',
+                preview: '<div class="container" style="position: relative; height: 200px; border: 1px solid #ddd;"><button class="btn btn-secondary">底層內容</button><div class="{{class1}} {{class2}} {{class3}} {{class4}} {{class5}} bg-dark opacity-50 d-flex justify-content-center align-items-center" style="z-index: 1050; position: absolute;"><button class="btn btn-light btn-sm" onclick="this.parentElement.style.display=\'none\'">關閉預覽 (Close Preview)</button></div></div>',
                 image: 'https://via.placeholder.com/400x300?text=Fullscreen+Overlay',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
                 pageTitle: 'Position - Fullscreen',
@@ -1161,8 +1162,11 @@
                 <div class="modal-body">
                     <p>在開始之前，請確保您的專案已經正確掛載了 Bootstrap 的 CSS 和 JavaScript 檔案。</p>
                     <div class="alert alert-info">
-                        <code>&lt;link href="bootstrap.min.css" rel="stylesheet"&gt;</code><br>
-                        <code>&lt;script src="bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code>
+                        <p class="mb-2">請將以下 CSS 連結放入 <code>&lt;head&gt;</code> 標籤內：</p>
+                        <code class="d-block mb-3 text-break">&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"&gt;</code>
+                        
+                        <p class="mb-2">請將以下 JS 連結放入 <code>&lt;/body&gt;</code> 標籤前：</p>
+                        <code class="d-block text-break">&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"&gt;&lt;/script&gt;</code>
                     </div>
                     <p>本遊戲將帶領您一步步熟悉 Bootstrap 的網格系統與排版技巧！</p>
                 </div>
