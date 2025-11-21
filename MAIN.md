@@ -72,10 +72,16 @@ js掛載於</body>前
 | 5-7 | 輸入群組 | input-group | 製作商品數量增減器 (- 1 +)。 |
 | 5-8 | 水平表單 | col-2, col-10 | 利用 Grid System 排列標籤與輸入框。 |
 
-### 主題五附錄：表單驗證 (待新增)
+### 主題五附錄：表單驗證
 | 關卡 | 標題 | 答案 (Class/Tag) | 說明 |
 | :--- | :--- | :--- | :--- |
-| 5-9 | 表單驗證 | was-validated, required | 啟用 Bootstrap 的驗證樣式。 |
+| 5-9 | 驗證準備 | needs-validation | 為 form 標籤添加 needs-validation 類別。 |
+| 5-10 | 關閉預設 | novalidate | 添加 novalidate 屬性以關閉瀏覽器預設的驗證氣泡框。 |
+| 5-11 | 必填欄位 | required | 在 input 上添加 required 屬性。 |
+| 5-12 | 格式限制 | minlength | 使用 HTML5 屬性如 minlength 觸發驗證。 |
+| 5-13 | 錯誤訊息 | invalid-feedback | 添加 .invalid-feedback 區塊顯示錯誤訊息。 |
+| 5-14 | 成功訊息 | valid-feedback | 添加 .valid-feedback 區塊顯示成功訊息。 |
+| 5-15 | 啟用驗證 | was-validated | 使用 JavaScript 加上 was-validated 類別來顯示結果。 |
 
 ## 技術備註
 * 請用 modal 面板提示掛載 bootstrap css 和 js
@@ -98,7 +104,7 @@ js掛載於</body>前
 - [x] 實作間距與對齊關卡 (2-1 ~ 2-7)
 - [x] 實作響應式設計關卡 (3-1 ~ 3-5)
 - [x] 實作圖片處理附錄關卡 (4-1 ~ 4-4)
-- [x] 實作表單設計關卡 (5-1 ~ 5-9)
+- [x] 實作表單設計關卡 (5-1 ~ 5-15)
 - [x] 修正 1-6 關卡為不嵌套結構，以對比 1-7
 - [x] 調整 1-11 為左窄右寬 (col-4, col-8)
 - [x] 調整 1-12 為左寬右窄 (col-10, col-2)
