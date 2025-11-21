@@ -543,6 +543,20 @@
                 cssRule: '/* CSS Aspect Ratio Hack */\n.ratio-container {\n  position: relative;\n  width: 100%;\n}\n/* padding-bottom: 56.25% = 9/16 */'
             },
             {
+                id: '4-5',
+                title: '圓形圖片',
+                description: '使用 border-radius 相關類別將正方形圖片變成圓形。',
+                hint: '使用 <code>.rounded-circle</code> 類別。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-4 text-center">\n      <img src="https://via.placeholder.com/200x200/28a745/white?text=Square" class="{{input1}}" alt="圓形圖片">\n      <p class="mt-2">圓形頭像</p>\n    </div>\n  </div>\n</div>',
+                inputs: [{placeholder: 'rounded-circle', answer: 'rounded-circle'}],
+                preview: '<div class="container"><div class="row"><div class="col-md-4 text-center"><img src="https://placedog.net/200/200" class="{{class1}}" alt="圓形圖片"><p class="mt-2">圓形頭像</p></div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Rounded+Circle',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/borders/#radius',
+                pageTitle: 'Borders - Radius',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/borders/#radius',
+                cssRule: '.rounded-circle {\n  border-radius: 50% !important;\n}'
+            },
+            {
                 id: '5-1',
                 title: '表單基礎',
                 description: '了解原生 HTML 表單結構，使用 form 標籤包裹輸入元件。',
@@ -654,7 +668,7 @@
                 title: '水平表單',
                 description: '利用 Grid System 排列標籤與輸入框，製作水平排列的表單。',
                 hint: 'Label 佔 <code>col-2</code>，Input 容器佔 <code>col-10</code>。',
-                htmlTemplate: '<div class="container">\n  <div class="row mb-3">\n    <label for="colFormLabel" class="{{input1}}">Email</label>\n    <div class="{{input2}}">\n      <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">\n    </div>\n  </div>\n</div>',
+                htmlTemplate: '<div class="container">\n  <div class="row mb-3">\n    <label for="colFormLabel" class="{{input1}}">Email</label>\n    <div class="{{input2}}">\n      <input type="email" class="form-control">\n    </div>\n  </div>\n</div>',
                 inputs: [
                     {placeholder: 'col-2', answer: 'col-2'},
                     {placeholder: 'col-10', answer: 'col-10'}
@@ -763,6 +777,93 @@
                 pageTitle: 'Forms - JavaScript',
                 pageLink: 'https://getbootstrap.com/docs/5.3/forms/validation/#custom-styles',
                 cssRule: '.was-validated .form-control:valid { border-color: var(--bs-success); }'
+            },
+            {
+                id: '6-1',
+                title: '固定導覽列',
+                description: '將導覽列固定在頁面頂部，使其在捲動時保持可見。',
+                hint: '使用 <code>.fixed-top</code> 類別 (或 <code>.position-fixed .top-0</code>)。',
+                htmlTemplate: '<div class="container" style="height: 200px; overflow-y: scroll; position: relative; border: 1px solid #ccc;">\n  <nav class="navbar navbar-dark bg-dark {{input1}}" style="width: 100%; z-index: 1000;">\n    <div class="container-fluid">\n      <span class="navbar-brand mb-0 h1">Fixed Navbar</span>\n    </div>\n  </nav>\n  <div style="padding-top: 60px;">\n    <p>向下捲動...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p>\n  </div>\n</div>',
+                inputs: [{placeholder: 'fixed-top', answer: 'fixed-top'}],
+                preview: '<div class="container" style="height: 200px; overflow-y: scroll; position: relative; border: 1px solid #ccc;"><nav class="navbar navbar-dark bg-dark {{class1}}" style="width: 100%; z-index: 1000; position: absolute;"><div class="container-fluid"><span class="navbar-brand mb-0 h1">Fixed Navbar</span></div></nav><div style="padding-top: 60px;"><p>向下捲動...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p><p>內容...</p></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Fixed+Navbar',
+                url: 'https://getbootstrap.com/docs/5.3/helpers/position/',
+                pageTitle: 'Position - Fixed Top',
+                pageLink: 'https://getbootstrap.com/docs/5.3/helpers/position/#fixed-top',
+                cssRule: '.fixed-top {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 1030;\n}'
+            },
+            {
+                id: '6-2',
+                title: '回到上方按鈕',
+                description: '在右下角放置一個回到上方的按鈕。',
+                hint: '使用 <code>.position-fixed</code>, <code>.bottom-0</code>, <code>.end-0</code> (Bootstrap 5 使用 end 代表右側)。',
+                htmlTemplate: '<div class="container" style="height: 200px; position: relative; border: 1px solid #ccc;">\n  <p>頁面內容...</p>\n  <button class="btn btn-primary {{input1}} {{input2}} {{input3}} m-3">Top</button>\n</div>',
+                inputs: [
+                    {placeholder: 'position-fixed', answer: 'position-fixed'},
+                    {placeholder: 'bottom-0', answer: 'bottom-0'},
+                    {placeholder: 'end-0', answer: 'end-0'}
+                ],
+                preview: '<div class="container" style="height: 200px; position: relative; border: 1px solid #ccc;"><p>頁面內容...</p><button class="btn btn-primary {{class1}} {{class2}} {{class3}} m-3" style="position: absolute;">Top</button></div>',
+                image: 'https://via.placeholder.com/400x300?text=Back+To+Top',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                pageTitle: 'Position - Utilities',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                cssRule: '.position-fixed { position: fixed !important; }\n.bottom-0 { bottom: 0 !important; }\n.end-0 { right: 0 !important; }'
+            },
+            {
+                id: '6-3',
+                title: '徽章標記',
+                description: '在按鈕角落放置通知徽章 (Absolute Badge)。',
+                hint: '父元素需有 <code>.position-relative</code>，徽章使用 <code>.position-absolute</code> 配合 <code>.top-0</code> / <code>.end-0</code>。',
+                htmlTemplate: '<div class="container text-center">\n  <button type="button" class="btn btn-primary position-relative">\n    Inbox\n    <span class="badge bg-danger {{input1}} {{input2}} {{input3}}">\n      99+\n    </span>\n  </button>\n</div>',
+                inputs: [
+                    {placeholder: 'position-absolute', answer: 'position-absolute'},
+                    {placeholder: 'top-0', answer: 'top-0'},
+                    {placeholder: 'end-0', answer: 'end-0'}
+                ],
+                preview: '<div class="container text-center"><button type="button" class="btn btn-primary position-relative">Inbox <span class="badge bg-danger {{class1}} {{class2}} {{class3}}">99+</span></button></div>',
+                image: 'https://via.placeholder.com/400x300?text=Badge+Position',
+                url: 'https://getbootstrap.com/docs/5.3/components/badges/#positioned',
+                pageTitle: 'Badges - Positioned',
+                pageLink: 'https://getbootstrap.com/docs/5.3/components/badges/#positioned',
+                cssRule: '.position-absolute { position: absolute !important; }'
+            },
+            {
+                id: '6-4',
+                title: '懸停覆蓋層',
+                description: '製作滑鼠滑入時顯示的半透明黑色覆蓋層 (Overlay)。',
+                hint: '父元素需設定 <code>.position-relative</code>，覆蓋層設定 <code>.position-absolute</code>。',
+                htmlTemplate: '<div class="container">\n  <div class="card {{input1}}" style="width: 18rem; overflow: hidden;">\n    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">\n    <div class="overlay {{input2}} w-100 h-100 d-flex align-items-center justify-content-center" \n         style="background: rgba(0,0,0,0.5); top: 0; left: 0; opacity: 0; transition: opacity 0.3s;">\n      <span class="text-white">View Details</span>\n    </div>\n  </div>\n  <style>.card:hover .overlay { opacity: 1 !important; }</style>\n</div>',
+                inputs: [
+                    {placeholder: 'position-relative', answer: 'position-relative'},
+                    {placeholder: 'position-absolute', answer: 'position-absolute'}
+                ],
+                preview: '<div class="container"><div class="card {{class1}}" style="width: 18rem; overflow: hidden; position: relative;"><img src="https://placedog.net/300/200" class="card-img-top" alt="..."><div class="overlay {{class2}} w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(0,0,0,0.5); top: 0; left: 0; opacity: 0; transition: opacity 0.3s; position: absolute;"><span class="text-white">View Details</span></div></div><style>.card:hover .overlay { opacity: 1 !important; }</style></div>',
+                image: 'https://via.placeholder.com/400x300?text=Hover+Overlay',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                pageTitle: 'Position - Overlay',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                cssRule: '/* Custom hover effect */'
+            },
+            {
+                id: '6-5',
+                title: '全螢幕覆蓋',
+                description: '創建一個全螢幕的遮罩層 (Overlay)。',
+                hint: '使用 <code>.position-fixed</code> 並設定四邊為 0 (<code>top-0</code>, <code>bottom-0</code>, <code>start-0</code>, <code>end-0</code>)。',
+                htmlTemplate: '<div class="container">\n  <button class="btn btn-secondary">底層內容</button>\n  <div class="{{input1}} {{input2}} {{input3}} {{input4}} {{input5}} bg-dark opacity-50" style="z-index: 1050;"></div>\n</div>',
+                inputs: [
+                    {placeholder: 'position-fixed', answer: 'position-fixed'},
+                    {placeholder: 'top-0', answer: 'top-0'},
+                    {placeholder: 'bottom-0', answer: 'bottom-0'},
+                    {placeholder: 'start-0', answer: 'start-0'},
+                    {placeholder: 'end-0', answer: 'end-0'}
+                ],
+                preview: '<div class="container" style="position: relative; height: 200px; border: 1px solid #ddd;"><button class="btn btn-secondary">底層內容</button><div class="{{class1}} {{class2}} {{class3}} {{class4}} {{class5}} bg-dark opacity-50" style="z-index: 1050; position: absolute;"></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Fullscreen+Overlay',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                pageTitle: 'Position - Fullscreen',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                cssRule: '.top-0 { top: 0 !important; }\n.bottom-0 { bottom: 0 !important; }\n.start-0 { left: 0 !important; }\n.end-0 { right: 0 !important; }'
             }
         ];
 
@@ -979,7 +1080,8 @@
                 '2': '主題二：間距與對齊',
                 '3': '主題三：響應式設計',
                 '4': '主題四：圖片處理附錄',
-                '5': '主題五：表單設計'
+                '5': '主題五：表單設計',
+                '6': '主題六：定位與覆蓋'
             };
 
             const sections = {};
