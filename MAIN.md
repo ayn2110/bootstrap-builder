@@ -71,6 +71,10 @@ js掛載於</body>前
 | 5-6 | 核取與單選 | form-check-input | 自定義 Checkbox 和 Radio 樣式。 |
 | 5-7 | 輸入群組 | input-group | 製作商品數量增減器 (- 1 +)。 |
 | 5-8 | 水平表單 | col-2, col-10 | 利用 Grid System 排列標籤與輸入框。 |
+
+### 主題五附錄：表單驗證 (待新增)
+| 關卡 | 標題 | 答案 (Class/Tag) | 說明 |
+| :--- | :--- | :--- | :--- |
 | 5-9 | 表單驗證 | was-validated, required | 啟用 Bootstrap 的驗證樣式。 |
 
 ## 技術備註
