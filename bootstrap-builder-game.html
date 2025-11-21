@@ -50,6 +50,13 @@
                     <div class="hint-section" id="hintSection">
                         使用 <code>.container</code> 類別來創建一個響應式固定寬度的容器。
                     </div>
+
+                    <div class="css-supplement-section" id="cssSupplementSection" style="margin-top: 15px; display: none;">
+                        <div style="background: #e2e3e5; padding: 15px; border-radius: 8px; border-left: 4px solid #6c757d;">
+                            <div style="font-weight: bold; color: #495057; margin-bottom: 8px;">🎨 CSS 補充</div>
+                            <pre style="margin: 0; white-space: pre-wrap; font-size: 0.85em; color: #212529;"><code id="cssRuleContent"></code></pre>
+                        </div>
+                    </div>
                     <div class="manual-section" id="manualSection" style="margin-top: 15px; display: none;">
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
                             <div style="font-weight: bold; color: #495057; margin-bottom: 8px;">📚 Bootstrap 官方手冊</div>
@@ -97,7 +104,8 @@
                 image: './images/1-1.png',
                 url: 'https://www.camacafe.com/New/',
                 pageTitle: 'Containers - 容器組件',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/containers/'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/containers/',
+                cssRule: '.container {\n  --bs-gutter-x: 1.5rem;\n  width: 100%;\n  padding-right: calc(var(--bs-gutter-x) * 0.5);\n  padding-left: calc(var(--bs-gutter-x) * 0.5);\n  margin-right: auto;\n  margin-left: auto;\n}'
             },
             {
                 id: '1-2',
@@ -110,7 +118,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Container+Fluid',
                 url: 'https://getbootstrap.com/docs/5.3/layout/containers/',
                 pageTitle: 'Containers - 流體容器',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/containers/#fluid-containers'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/containers/#fluid-containers',
+                cssRule: '.container-fluid {\n  --bs-gutter-x: 1.5rem;\n  width: 100%;\n  padding-right: calc(var(--bs-gutter-x) * 0.5);\n  padding-left: calc(var(--bs-gutter-x) * 0.5);\n  margin-right: auto;\n  margin-left: auto;\n}'
             },
             {
                 id: '1-3',
@@ -123,7 +132,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Row+Layout',
                 url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
                 pageTitle: 'Grid System - 網格行',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#row-columns'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#row-columns',
+                cssRule: '.row {\n  --bs-gutter-x: 1.5rem;\n  --bs-gutter-y: 0;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: calc(-1 * var(--bs-gutter-y));\n  margin-right: calc(-0.5 * var(--bs-gutter-x));\n  margin-left: calc(-0.5 * var(--bs-gutter-x));\n}'
             },
             {
                 id: '1-4',
@@ -136,7 +146,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Auto+Column',
                 url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
                 pageTitle: 'Columns - 自動欄位',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#auto-layout-columns'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#auto-layout-columns',
+                cssRule: '.col {\n  flex: 1 0 0%;\n}'
             },
             {
                 id: '1-5',
@@ -149,7 +160,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Utility+Classes',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/background/',
                 pageTitle: 'Utilities - 背景顏色',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/background/'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/background/',
+                cssRule: '.bg-primary {\n  --bs-bg-opacity: 1;\n  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;\n}'
             },
             {
                 id: '1-6',
@@ -162,20 +174,22 @@
                 image: 'https://via.placeholder.com/400x300?text=Equal+Columns',
                 url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
                 pageTitle: 'Columns - 等寬欄位',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width',
+                cssRule: '.col {\n  flex: 1 0 0%;\n}'
             },
             {
                 id: '1-7',
                 title: '多包一層',
                 description: '了解 Grid System 的運作原理：col 本身有預設的 padding (gutter)，若要讓內容有背景色且不貼齊邊界，應在 col 內多包一層。',
                 hint: '外層使用 <code>.col</code> 定義欄位寬度，內層元素負責樣式與內容。',
-                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">\n      <div class="bg-primary text-white p-3">內容區塊</div>\n    </div>\n  </div>\n</div>',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}">\n      <div class="bg-primary text-white p-3">內容區塊</div>\n    </div>\n    <div class="{{input1}}">\n      <div class="bg-primary text-white p-3">內容區塊</div>\n    </div>\n  </div>\n</div>',
                 inputs: [{placeholder: 'col', answer: 'col'}],
-                preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-primary text-white p-3">內容區塊</div></div></div></div>',
+                preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-primary text-white p-3">內容區塊</div></div><div class="{{class1}}"><div class="bg-primary text-white p-3">內容區塊</div></div></div></div>',
                 image: 'https://via.placeholder.com/400x300?text=Nested+Content',
                 url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
                 pageTitle: 'Grid System - 巢狀結構',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/',
+                cssRule: '.col {\n  flex: 1 0 0%;\n}\n/* Padding is handled by the gutter on .row > * */'
             },
             {
                 id: '1-8',
@@ -188,7 +202,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Three+Columns',
                 url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
                 pageTitle: 'Columns - 多欄佈局',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width-multi-row'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width-multi-row',
+                cssRule: '.col {\n  flex: 1 0 0%;\n}'
             },
             {
                 id: '1-9',
@@ -201,7 +216,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Five+Columns',
                 url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
                 pageTitle: 'Columns - 多欄等分',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#equal-width',
+                cssRule: '.col {\n  flex: 1 0 0%;\n}'
             },
             {
                 id: '1-10',
@@ -214,7 +230,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Multi+Rows',
                 url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
                 pageTitle: 'Grid System - 多行排列',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#row-columns'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#row-columns',
+                cssRule: '.col-4 {\n  flex: 0 0 auto;\n  width: 33.33333333%;\n}'
             },
             {
                 id: '1-11',
@@ -230,7 +247,8 @@
                 image: 'https://via.placeholder.com/400x300?text=4-8+Layout',
                 url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
                 pageTitle: 'Grid System - 固定欄寬',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#setting-one-column-width'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#setting-one-column-width',
+                cssRule: '.col-4 {\n  width: 33.33333333%;\n}\n.col-8 {\n  width: 66.66666667%;\n}'
             },
             {
                 id: '1-12',
@@ -246,7 +264,8 @@
                 image: 'https://via.placeholder.com/400x300?text=10-2+Layout',
                 url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
                 pageTitle: 'Grid System - 不等分佈局',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#mix-and-match'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#mix-and-match',
+                cssRule: '.col-10 {\n  width: 83.33333333%;\n}\n.col-2 {\n  width: 16.66666667%;\n}'
             },
             {
                 id: '1-13',
@@ -259,7 +278,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Overflow+Auto',
                 url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
                 pageTitle: 'Columns - 自動欄位行為',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/',
+                cssRule: '.col {\n  flex: 1 0 0%;\n}'
             },
             {
                 id: '1-14',
@@ -275,7 +295,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Column+Wrapping',
                 url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
                 pageTitle: 'Grid System - 欄位換行',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#column-wrapping'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#column-wrapping',
+                cssRule: '.col-4 {\n  width: 33.33333333%;\n}\n.col-9 {\n  width: 75%;\n}'
             },
             {
                 id: '2-1',
@@ -288,7 +309,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Center+Horizontal',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
                 pageTitle: 'Spacing - 自動外邊距',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#horizontal-centering'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#horizontal-centering',
+                cssRule: '.mx-auto {\n  margin-right: auto !important;\n  margin-left: auto !important;\n}'
             },
             {
                 id: '2-2',
@@ -301,7 +323,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Padding+Top',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
                 pageTitle: 'Spacing - 內邊距工具',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#how-it-works'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#how-it-works',
+                cssRule: '.pt-5 {\n  padding-top: 3rem !important;\n}'
             },
             {
                 id: '2-3',
@@ -314,7 +337,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Margin+Bottom',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
                 pageTitle: 'Spacing - 外邊距工具',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#margin-and-padding'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#margin-and-padding',
+                cssRule: '.mb-4 {\n  margin-bottom: 1.5rem !important;\n}'
             },
             {
                 id: '2-4',
@@ -327,7 +351,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Text+Center',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/text/',
                 pageTitle: 'Text - 文字對齊',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/text/#text-alignment'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/text/#text-alignment',
+                cssRule: '.text-center {\n  text-align: center !important;\n}'
             },
             {
                 id: '2-5',
@@ -340,7 +365,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Vertical+Align',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/flex/',
                 pageTitle: 'Flex - 垂直對齊',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#align-items'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#align-items',
+                cssRule: '.align-items-center {\n  align-items: center !important;\n}'
             },
             {
                 id: '2-6',
@@ -356,7 +382,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Spacing+Combo',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
                 pageTitle: 'Spacing - 組合間距',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#examples'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#examples',
+                cssRule: '.mt-3 {\n  margin-top: 1rem !important;\n}\n.px-4 {\n  padding-right: 1.5rem !important;\n  padding-left: 1.5rem !important;\n}'
             },
             {
                 id: '2-7',
@@ -369,7 +396,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Justify+Around',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/flex/',
                 pageTitle: 'Flex - 水平分佈',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#justify-content'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#justify-content',
+                cssRule: '.justify-content-around {\n  justify-content: space-around !important;\n}'
             },
             {
                 id: '3-1',
@@ -385,7 +413,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Responsive+Grid',
                 url: 'https://getbootstrap.com/docs/5.3/layout/breakpoints/',
                 pageTitle: 'Breakpoints - 響應式斷點',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints',
+                cssRule: '@media (min-width: 768px) {\n  .col-md-6 {\n    flex: 0 0 auto;\n    width: 50%;\n  }\n}'
             },
             {
                 id: '3-2',
@@ -401,7 +430,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Flex+Order',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/flex/',
                 pageTitle: 'Flex - 元素順序',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#order'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#order',
+                cssRule: '.order-first {\n  order: -1 !important;\n}\n@media (min-width: 768px) {\n  .order-md-last {\n    order: 6 !important;\n  }\n}'
             },
             {
                 id: '3-3',
@@ -414,7 +444,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Column+Offset',
                 url: 'https://getbootstrap.com/docs/5.3/layout/columns/',
                 pageTitle: 'Columns - 欄位位移',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#offsetting'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/columns/#offsetting',
+                cssRule: '.offset-3 {\n  margin-left: 25%;\n}'
             },
             {
                 id: '3-4',
@@ -427,7 +458,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Remove+Gutters',
                 url: 'https://getbootstrap.com/docs/5.3/layout/gutters/',
                 pageTitle: 'Gutters - 間距控制',
-                pageLink: 'https://getbootstrap.com/docs/5.3/layout/gutters/#no-gutters'
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/gutters/#no-gutters',
+                cssRule: '.g-0,\n.gx-0 {\n  --bs-gutter-x: 0;\n}\n.g-0,\n.gy-0 {\n  --bs-gutter-y: 0;\n}'
             },
             {
                 id: '3-5',
@@ -443,7 +475,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Display+Utilities',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/display/',
                 pageTitle: 'Display - 顯示控制',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements'
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements',
+                cssRule: '.d-none {\n  display: none !important;\n}\n@media (min-width: 992px) {\n  .d-lg-block {\n    display: block !important;\n  }\n}'
             },
             {
                 id: '4-1',
@@ -456,7 +489,8 @@
                 image: 'https://placedog.net/600/600',
                 url: 'https://getbootstrap.com/docs/5.3/content/images/',
                 pageTitle: 'Images - 響應式圖片',
-                pageLink: 'https://getbootstrap.com/docs/5.3/content/images/#responsive-images'
+                pageLink: 'https://getbootstrap.com/docs/5.3/content/images/#responsive-images',
+                cssRule: '.img-fluid {\n  max-width: 100%;\n  height: auto;\n}'
             },
             {
                 id: '4-2',
@@ -471,7 +505,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Background+Image',
                 url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/background-image',
                 pageTitle: 'Background Image - 背景圖片技術',
-                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/background-image'
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/background-image',
+                cssRule: '/* CSS Background */\nbackground-image: url(...);\nbackground-size: cover;\nbackground-position: center;'
             },
             {
                 id: '4-3',
@@ -486,7 +521,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Object+Fit',
                 url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/object-fit',
                 pageTitle: 'Object-fit - 圖片適應控制',
-                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/object-fit'
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/object-fit',
+                cssRule: '/* CSS Object Fit */\nobject-fit: cover;\n/* or */\nobject-fit: contain;'
             },
             {
                 id: '4-4',
@@ -502,7 +538,8 @@
                 image: 'https://via.placeholder.com/400x300?text=Aspect+Ratio',
                 url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/aspect-ratio',
                 pageTitle: 'Aspect-ratio - 固定比例技術',
-                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/aspect-ratio'
+                pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/aspect-ratio',
+                cssRule: '/* CSS Aspect Ratio */\naspect-ratio: 16 / 9;'
             }
         ];
 
@@ -522,6 +559,17 @@
             document.getElementById('levelTitle').textContent = level.title;
             document.getElementById('levelDescription').textContent = level.description;
             document.getElementById('hintSection').innerHTML = level.hint;
+
+            // 顯示 CSS 補充
+            const cssSection = document.getElementById('cssSupplementSection');
+            const cssContent = document.getElementById('cssRuleContent');
+            
+            if (level.cssRule) {
+                cssSection.style.display = 'block';
+                cssContent.textContent = level.cssRule;
+            } else {
+                cssSection.style.display = 'none';
+            }
 
             // 顯示手冊連結
             const manualSection = document.getElementById('manualSection');
