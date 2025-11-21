@@ -11,16 +11,20 @@
     <div class="game-container">
         <div class="header">
             <div class="header-top">
-                <h1>🎮 Bootstrap Builder</h1>
-                <button class="btn-menu" data-bs-toggle="offcanvas" data-bs-target="#levelOffcanvas" aria-controls="levelOffcanvas">
-                    ☰ 大綱
-                </button>
+                <h2 class="mb-0" style="font-size: 1.8rem;">🎮 Bootstrap Builder</h2>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-2 text-white">
+                        <span style="font-size: 0.9em; white-space: nowrap;">關卡: <span id="levelProgress">1 / 50</span></span>
+                        <div class="progress-bar-container" style="width: 100px; margin: 0; height: 8px; background: rgba(255,255,255,0.3);">
+                            <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <button class="btn-menu" data-bs-toggle="offcanvas" data-bs-target="#levelOffcanvas" aria-controls="levelOffcanvas">
+                        ☰ 大綱
+                    </button>
+                </div>
             </div>
-            <p>透過實作學習 Bootstrap 網格系統</p>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
-            </div>
-            <p style="margin-top: 10px; font-size: 0.9em;">關卡進度: <span id="levelProgress">1 / 26</span></p>
+            <p class="mt-2">透過實作學習 Bootstrap 網格系統</p>
         </div>
 
         <div class="main-content">
@@ -845,7 +849,7 @@
                     {placeholder: 'start-0', answer: 'start-0'},
                     {placeholder: 'end-0', answer: 'end-0'}
                 ],
-                preview: '<div class="container" style="position: relative; height: 200px; border: 1px solid #ddd;"><button class="btn btn-secondary">底層內容</button><div class="{{class1}} {{class2}} {{class3}} {{class4}} {{class5}} bg-dark opacity-50 d-flex justify-content-center align-items-center" style="z-index: 1050; position: absolute;"><button class="btn btn-light btn-sm" onclick="this.parentElement.style.display=\'none\'">關閉預覽 (Close Preview)</button></div></div>',
+                preview: '<div class="container" style="position: relative; height: 200px; border: 1px solid #ddd;"><button class="btn btn-secondary">底層內容</button><div class="{{class1}} {{class2}} {{class3}} {{class4}} {{class5}} bg-dark opacity-50 d-flex justify-content-center align-items-center" style="z-index: 1050; position: absolute;"><button class="btn btn-light btn-sm" onclick="this.parentElement.classList.remove(\'position-fixed\', \'top-0\', \'bottom-0\', \'start-0\', \'end-0\')">關閉預覽 (Close Preview)</button></div></div>',
                 image: 'https://via.placeholder.com/400x300?text=Fullscreen+Overlay',
                 url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
                 pageTitle: 'Position - Fullscreen',
