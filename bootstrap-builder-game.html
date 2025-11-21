@@ -253,19 +253,19 @@
             {
                 id: '1-12',
                 title: '左寬右窄',
-                description: '創建管理者後台常見的佈局:主要數據表格佔 10 欄,操作按鈕區佔 2 欄。',
-                hint: '使用 <code>.col-10</code> 和 <code>.col-2</code> 來分配空間。',
+                description: '創建管理者後台常見的佈局:主要數據表格佔 7 欄,操作按鈕區佔 5 欄。',
+                hint: '使用 <code>.col-7</code> 和 <code>.col-5</code> 來分配空間。',
                 htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}"><div class="bg-primary text-white p-3">數據表格</div></div>\n    <div class="{{input2}}"><div class="bg-primary text-white p-3">操作按鈕</div></div>\n  </div>\n</div>',
                 inputs: [
-                    {placeholder: 'col-10', answer: 'col-10'},
-                    {placeholder: 'col-2', answer: 'col-2'}
+                    {placeholder: 'col-7', answer: 'col-7'},
+                    {placeholder: 'col-5', answer: 'col-5'}
                 ],
                 preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-primary text-white p-3">數據表格</div></div><div class="{{class2}}"><div class="bg-primary text-white p-3">操作按鈕</div></div></div></div>',
-                image: 'https://via.placeholder.com/400x300?text=10-2+Layout',
+                image: 'https://via.placeholder.com/400x300?text=7-5+Layout',
                 url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
                 pageTitle: 'Grid System - 不等分佈局',
                 pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#mix-and-match',
-                cssRule: '.col-10 {\n  width: 83.33333333%;\n}\n.col-2 {\n  width: 16.66666667%;\n}'
+                cssRule: '.col-7 {\n  width: 58.33333333%;\n}\n.col-5 {\n  width: 41.66666667%;\n}'
             },
             {
                 id: '1-13',
@@ -299,6 +299,24 @@
                 cssRule: '.col-4 {\n  width: 33.33333333%;\n}\n.col-9 {\n  width: 75%;\n}'
             },
             {
+                id: '1-15',
+                title: '巢狀網格',
+                description: '在欄位中可以再放入一個 row，實現更細緻的佈局。請在右側欄位中放入兩個等寬的子欄位。',
+                hint: '外層使用 <code>.col-4</code> 和 <code>.col-8</code>。在 <code>.col-8</code> 內部再使用 <code>.row</code> 包裹兩個 <code>.col-6</code>。',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="{{input1}}"><div class="bg-secondary text-white p-3">側邊欄</div></div>\n    <div class="{{input2}}">\n      <div class="row">\n        <div class="{{input3}}"><div class="bg-primary text-white p-3">子欄位 A</div></div>\n        <div class="{{input3}}"><div class="bg-primary text-white p-3">子欄位 B</div></div>\n      </div>\n    </div>\n  </div>\n</div>',
+                inputs: [
+                    {placeholder: 'col-4', answer: 'col-4'},
+                    {placeholder: 'col-8', answer: 'col-8'},
+                    {placeholder: 'col-6', answer: 'col-6'}
+                ],
+                preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-secondary text-white p-3">側邊欄</div></div><div class="{{class2}}"><div class="row"><div class="{{class3}}"><div class="bg-primary text-white p-3">子欄位 A</div></div><div class="{{class3}}"><div class="bg-primary text-white p-3">子欄位 B</div></div></div></div></div></div>',
+                image: 'https://via.placeholder.com/400x300?text=Nested+Grid',
+                url: 'https://getbootstrap.com/docs/5.3/layout/grid/',
+                pageTitle: 'Grid System - 巢狀網格',
+                pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#nesting',
+                cssRule: '.row {\n  --bs-gutter-x: 1.5rem;\n  --bs-gutter-y: 0;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: calc(-1 * var(--bs-gutter-y));\n  margin-right: calc(-0.5 * var(--bs-gutter-x));\n  margin-left: calc(-0.5 * var(--bs-gutter-x));\n}'
+            },
+            {
                 id: '2-1',
                 title: '水平居中',
                 description: '將一個固定寬度的區塊 (如登入表單) 在頁面上水平置中。',
@@ -314,17 +332,17 @@
             },
             {
                 id: '2-2',
-                title: '頂部留白',
-                description: '調整標題的上內邊距 (Padding Top) 為級別 5 (最大間距)。',
-                hint: '使用 <code>.pt-5</code> 來設置上內邊距為最大級別。',
-                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">網站標題</h2>\n  <p>內容文字...</p>\n</div>',
-                inputs: [{placeholder: 'pt-5', answer: 'pt-5'}],
-                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding-left: 20px; padding-right: 20px; border-radius: 5px;">網站標題</h2><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">內容文字...</p></div>',
-                image: 'https://via.placeholder.com/400x300?text=Padding+Top',
-                url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
-                pageTitle: 'Spacing - 內邊距工具',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#how-it-works',
-                cssRule: '.pt-5 {\n  padding-top: 3rem !important;\n}'
+                title: '文字置中',
+                description: '將標題文字對齊置中。',
+                hint: '使用 <code>.text-center</code> 來將文字置中對齊。',
+                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">歡迎來到我們的網站</h2>\n</div>',
+                inputs: [{placeholder: 'text-center', answer: 'text-center'}],
+                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>',
+                image: 'https://via.placeholder.com/400x300?text=Text+Center',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/text/',
+                pageTitle: 'Text - 文字對齊',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/text/#text-alignment',
+                cssRule: '.text-center {\n  text-align: center !important;\n}'
             },
             {
                 id: '2-3',
@@ -342,17 +360,17 @@
             },
             {
                 id: '2-4',
-                title: '文字置中',
-                description: '將標題文字對齊置中。',
-                hint: '使用 <code>.text-center</code> 來將文字置中對齊。',
-                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">歡迎來到我們的網站</h2>\n</div>',
-                inputs: [{placeholder: 'text-center', answer: 'text-center'}],
-                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>',
-                image: 'https://via.placeholder.com/400x300?text=Text+Center',
-                url: 'https://getbootstrap.com/docs/5.3/utilities/text/',
-                pageTitle: 'Text - 文字對齊',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/text/#text-alignment',
-                cssRule: '.text-center {\n  text-align: center !important;\n}'
+                title: '頂部留白',
+                description: '調整標題的上內邊距 (Padding Top) 為級別 5 (最大間距)。',
+                hint: '使用 <code>.pt-5</code> 來設置上內邊距為最大級別。',
+                htmlTemplate: '<div class="container">\n  <h2 class="{{input1}}">網站標題</h2>\n  <p>內容文字...</p>\n</div>',
+                inputs: [{placeholder: 'pt-5', answer: 'pt-5'}],
+                preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding-left: 20px; padding-right: 20px; border-radius: 5px;">網站標題</h2><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">內容文字...</p></div>',
+                image: 'https://via.placeholder.com/400x300?text=Padding+Top',
+                url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
+                pageTitle: 'Spacing - 內邊距工具',
+                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#how-it-works',
+                cssRule: '.pt-5 {\n  padding-top: 3rem !important;\n}'
             },
             {
                 id: '2-5',
@@ -370,23 +388,6 @@
             },
             {
                 id: '2-6',
-                title: '間距微調',
-                description: '調整卡片的上邊距 (mt) 為 3,左右內邊距 (px) 為 4,實現視覺微調。',
-                hint: '使用 <code>.mt-3</code> 和 <code>.px-4</code> 組合。',
-                htmlTemplate: '<div class="container">\n  <div class="card {{input1}} {{input2}}">卡片內容</div>\n</div>',
-                inputs: [
-                    {placeholder: 'mt-3', answer: 'mt-3'},
-                    {placeholder: 'px-4', answer: 'px-4'}
-                ],
-                preview: '<div class="container"><div class="{{class1}} {{class2}} preview-element">卡片內容</div></div>',
-                image: 'https://via.placeholder.com/400x300?text=Spacing+Combo',
-                url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
-                pageTitle: 'Spacing - 組合間距',
-                pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#examples',
-                cssRule: '.mt-3 {\n  margin-top: 1rem !important;\n}\n.px-4 {\n  padding-right: 1.5rem !important;\n  padding-left: 1.5rem !important;\n}'
-            },
-            {
-                id: '2-7',
                 title: '均勻分佈',
                 description: '將一組按鈕水平放置,並確保它們之間及邊緣都有平均間隔。',
                 hint: '在 <code>.row</code> 上使用 <code>.justify-content-around</code> 來均勻分佈元素。',
