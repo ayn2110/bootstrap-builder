@@ -11,7 +11,7 @@
     <div class="game-container">
         <div class="header">
             <div class="header-top">
-                <h2 class="mb-0" style="font-size: 1.8rem;">🎮 Bootstrap Builder</h2>
+                <h2 class="mb-0" style="font-size: 1.8rem;">Bootstrap Builder</h2>
                 <div class="d-flex align-items-center gap-3">
                     <div class="d-flex align-items-center gap-2 text-white">
                         <span style="font-size: 0.9em; white-space: nowrap;">關卡: <span id="levelProgress">1 / 50</span></span>
@@ -24,7 +24,6 @@
                     </button>
                 </div>
             </div>
-            <p class="mt-2">透過實作學習 Bootstrap 網格系統</p>
         </div>
 
         <div class="main-content">
@@ -88,7 +87,8 @@
                     </div>
                 </div>
 
-                <div class="button-group" style="margin-top: auto;">
+                <div class="button-group" style="margin-top: auto; display: flex; gap: 10px;">
+                    <button class="btn-custom btn-secondary" onclick="prevLevel()">← 上一關</button>
                     <button class="btn-custom btn-next" onclick="nextLevel()">下一關 →</button>
                 </div>
             </div>
@@ -994,6 +994,13 @@
             renderCodeEditor();
             updatePreview();
             document.getElementById('feedback').style.display = 'none';
+        }
+
+        function prevLevel() {
+            if (currentLevel > 0) {
+                loadLevel(currentLevel - 1);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
         function nextLevel() {
