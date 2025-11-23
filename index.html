@@ -857,7 +857,45 @@
                 cssRule: '.top-0 { top: 0 !important; }\n.bottom-0 { bottom: 0 !important; }\n.start-0 { left: 0 !important; }\n.end-0 { right: 0 !important; }'
             }
         ];
+// 將所有 levels 裡 inputs 的 placeholder 清空。
+// 使用方式：
+// 1) 把這段程式貼到 index.html 中 (放在 levels 陣列宣告之後)。
+// 2) 在 console 執行 clearLevelPlaceholders() 或在程式初始化時呼叫它即可。
+// 這會嘗試重新 render 編輯器與預覽（若頁面已有對應函式）。
 
+function clearLevelPlaceholders(reloadCurrent = true) {
+  if (typeof levels === 'undefined' || !Array.isArray(levels)) {
+    console.warn('clearLevelPlaceholders: 找不到 levels 陣列，請確認此函式置於 levels 宣告之後。');
+    return;
+  }
+
+  levels.forEach(level => {
+    if (!Array.isArray(level.inputs)) return;
+    level.inputs.forEach(inputObj => {
+      if (inputObj && typeof inputObj === 'object' && 'placeholder' in inputObj) {
+        inputObj.placeholder = '';
+      }
+    });
+  });
+
+  // 若頁面已實作下面這些函式，嘗試更新畫面
+  if (reloadCurrent) {
+    if (typeof renderCodeEditor === 'function') {
+      try { renderCodeEditor(); } catch (e) { console.warn('renderCodeEditor() 執行失敗：', e); }
+    }
+    if (typeof updatePreview === 'function') {
+      try { updatePreview(); } catch (e) { console.warn('updatePreview() 執行失敗：', e); }
+    }
+    if (typeof updateMenuActiveState === 'function') {
+      try { updateMenuActiveState(); } catch (e) { /* optional */ }
+    }
+  }
+
+  console.info('clearLevelPlaceholders: 已將所有 placeholder 設為空字串。');
+}
+
+// 暴露到 window 方便在 console 執行
+window.clearLevelPlaceholders = clearLevelPlaceholders;
         let currentLevel = 0;
         let userInputs = [];
 
