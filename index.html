@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+        <!-- Google Analytics (GA4) -->
+        <!-- TODO: Replace G-XXXXXXXXXX with your Measurement ID -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);} 
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+        </script>
     <div class="game-container">
         <div class="header">
             <div class="header-top">
@@ -531,15 +540,16 @@
             },
             {
                 id: '4-4',
+                hidden: true,
                 title: '固定比例容器',
                 description: '使用 padding-bottom 技術創建固定比例的圖片容器。',
                 hint: '使用 <code>padding-bottom</code> 百分比技術來維持固定的寬高比例。(此為自定義樣式 非Bootstrap class)',
-                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-6">\n      <div class="{{input1}}" style="{{input2}}">\n        <img src="https://via.placeholder.com/1600x900/6f42c1/white?text=16:9+Ratio" class="img-fluid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9 比例圖片">\n      </div>\n      <p class="mt-2 text-center">16:9 比例</p>\n    </div>\n  </div>\n</div>',
+                htmlTemplate: '<div class="container">\n  <div class="row">\n    <div class="col-md-6">\n      <div class="{{input1}}" style="{{input2}}">\n        <img src="https://via.placeholder.com/600x600/6f42c1/white?text=1:1+Ratio" class="img-fluid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;  border-radius: 10px;" alt="16:9 比例圖片">\n      </div>\n      <p class="mt-2 text-center">16:9 比例</p>\n    </div>\n  </div>\n</div>',
                 inputs: [
                     {placeholder: 'ratio-container', answer: 'ratio-container'},
                     {placeholder: 'padding-bottom: 56.25%; position: relative;', answer: 'padding-bottom: 56.25%; position: relative;'}
                 ],
-                preview: '<div class="container"><div class="row"><div class="col-md-6"><div class="{{class1}}" style="{{class2}}"><img src="https://placedog.net/1920/1080" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" alt="16:9"></div><p class="text-center mt-2" style="font-size: 0.85em;">16:9 比例</p></div></div></div>',
+                preview: '<div class="container"><div class="row"><div class="col-md-6"><div class="{{class1}}" style="{{class2}}"><img src="https://placedog.net/600x600" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;" alt="16:9"></div><p class="text-center mt-2" style="font-size: 0.85em;">16:9 比例</p></div></div></div>',
                 image: './images/no-image.png',
                 url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/padding-bottom',
                 pageTitle: 'Padding Bottom - 固定比例技術',
@@ -1089,6 +1099,7 @@
                 if (!sections[themeId]) {
                     sections[themeId] = [];
                 }
+                if (level.hidden) return;
                 sections[themeId].push({ ...level, index });
             });
 
