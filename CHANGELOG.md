@@ -117,7 +117,7 @@
 
 ### 技術
 - 使用 HTML5、CSS3、JavaScript ES6
-- 集成 Bootstrap 5.3.2
+- 集成 Bootstrap 5.3.8
 - 純前端實現，無需後端
 
 ---
