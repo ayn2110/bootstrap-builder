@@ -872,6 +872,12 @@
         let currentLevel = 0;
         let userInputs = [];
 
+        // ---- Analytics helper (dataLayer) ----
+        function dl(eventName, params = {}) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: eventName, ...params });
+        }
+
         function loadLevel(levelIndex) {
             if (levelIndex >= levels.length) {
                 showCompletion();
@@ -880,6 +886,9 @@
 
             currentLevel = levelIndex;
             const level = levels[currentLevel];
+
+            // GA4: view a level
+            dl('level_view', { level_id: level.id, level_title: level.title, level_index: currentLevel + 1 });
 
             document.getElementById('levelNumber').textContent = `關卡 ${level.id}`;
             document.getElementById('levelTitle').textContent = level.title;
@@ -989,10 +998,15 @@
                 }
             });
 
+            // GA4: answer checked
+            dl('answer_checked', { level_id: level.id, result: allCorrect ? 'pass' : 'fail' });
+
             if (allCorrect) {
                 feedback.className = 'feedback success';
                 feedback.textContent = '🎉 太棒了!答案正確!點擊「下一關」繼續挑戰。';
                 feedback.style.display = 'block';
+                // GA4: level passed
+                dl('level_passed', { level_id: level.id });
             } else {
                 feedback.className = 'feedback error';
                 feedback.textContent = '❌ 還不太對喔,再試試看!檢查一下提示區域的說明。';
@@ -1005,6 +1019,9 @@
             renderCodeEditor();
             updatePreview();
             document.getElementById('feedback').style.display = 'none';
+            // GA4: reset clicked
+            const level = levels[currentLevel];
+            dl('reset_clicked', { level_id: level.id });
         }
 
         function prevLevel() {
@@ -1023,6 +1040,9 @@
                 }
             });
 
+            // GA4: next clicked
+            dl('next_clicked', { level_id: level.id, allowed: allCorrect });
+
             if (!allCorrect) {
                 const feedback = document.getElementById('feedback');
                 feedback.className = 'feedback error';
@@ -1032,6 +1052,10 @@
             }
 
             if (currentLevel < levels.length - 1) {
+                // GA4: level advance
+                const nextIndex = currentLevel + 1;
+                const nextId = levels[nextIndex].id;
+                dl('level_advance', { from_level: levels[currentLevel].id, to_level: nextId });
                 loadLevel(currentLevel + 1);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
@@ -1061,6 +1085,8 @@
 
         function showCompletion() {
             const container = document.querySelector('.game-container');
+            // GA4: game complete
+            dl('game_complete', { total_levels: levels.length });
             container.innerHTML = `
                 <div class="header">
                     <h1>🎉 恭喜完成!</h1>
@@ -1154,6 +1180,8 @@
                         const offcanvasEl = document.getElementById('levelOffcanvas');
                         const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
                         if (offcanvas) offcanvas.hide();
+                        // GA4: menu level select
+                        dl('menu_level_select', { level_id: level.id, theme: themeId });
                         jumpToLevel(level.index);
                     };
                     listGroup.appendChild(a);
@@ -1168,6 +1196,9 @@
 
         // 初始化遊戲
         document.addEventListener('DOMContentLoaded', () => {
+            // GA4: app init
+            dl('app_init');
+
             // 顯示開始提示 Modal
             const startModal = new bootstrap.Modal(document.getElementById('startModal'));
             startModal.show();
@@ -1177,6 +1208,12 @@
             
             // 載入第一關
             loadLevel(0);
+
+            // 綁定主選單按鈕事件
+            const menuBtn = document.querySelector('.btn-menu');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => dl('menu_open', { source: 'header' }));
+            }
         });
     </script>
 
@@ -1243,6 +1280,9 @@
             loadLevel(levelIndex);
             // 滾動到頂部
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            // GA4: level jump
+            const target = levels[levelIndex];
+            if (target) dl('level_jump', { level_id: target.id, level_index: levelIndex + 1 });
         }
     </script>
 </body>
