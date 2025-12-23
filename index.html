@@ -959,7 +959,7 @@
                 level.inputs.forEach((input, inputIndex) => {
                     const placeholder = `{{input${inputIndex + 1}}}`;
                     if (processedLine.includes(placeholder)) {
-                        const inputElement = `<input type="text" class="code-input" id="input${inputIndex}" placeholder="${input.placeholder}" value="${userInputs[inputIndex] || ''}" oninput="handleInput(${inputIndex}, this.value)">`;
+                        const inputElement = `<input type="text" class="code-input" id="input${inputIndex}" placeholder="" value="${userInputs[inputIndex] || ''}" oninput="handleInput(${inputIndex}, this.value)">`;
                         // 替換 placeholder 為實際的 input 元素 HTML
                         processedLine = processedLine.replace(placeholder, inputElement);
                     }
