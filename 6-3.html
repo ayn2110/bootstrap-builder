@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 6-3</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '6-3',
+            title: '懸停覆蓋層',
+            description: '製作滑鼠滑入時顯示的半透明黑色覆蓋層 (Overlay)。',
+            hint: '父元素需設定 <code>.position-relative</code>，覆蓋層設定 <code>.position-absolute</code>。',
+            htmlTemplate: `<div class="container-fluid" style="min-height: 60vh; border: 1px solid #ccc; padding: 24px;">
+    <div class="card {{input1}}" style="width: 24rem; overflow: hidden;">
+    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+    <div class="overlay {{input2}} w-100 h-100 d-flex align-items-center justify-content-center" 
+         style="background: rgba(0,0,0,0.5); top: 0; left: 0; opacity: 0; transition: opacity 0.3s;">
+      <span class="text-white">View Details</span>
+    </div>
+  </div>
+  <style>.card:hover .overlay { opacity: 1 !important; }</style>
+</div>`,
+            inputs: [
+                { placeholder: 'position-relative', answer: 'position-relative' },
+                { placeholder: 'position-absolute', answer: 'position-absolute' }
+            ],
+            preview: '<div class="container-fluid" style="min-height: 60vh; border: 1px solid #ccc; padding: 24px;"><div class="card {{class1}}" style="width: 24rem; overflow: hidden;"><img src="https://placedog.net/300/200" class="card-img-top" alt="..."><div class="overlay {{class2}} w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(0,0,0,0.5); top: 0; left: 0; opacity: 0; transition: opacity 0.3s;"><span class="text-white">View Details</span></div></div><style>.card:hover .overlay { opacity: 1 !important; }</style></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+            pageTitle: 'Position - Overlay',
+            pageLink: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+            cssRule: '/* Custom hover effect */'
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

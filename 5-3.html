@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 5-3</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '5-3',
+            title: '資料傳送',
+            description: 'name 屬性是後端接收資料的關鍵，沒有 name 的 input 資料不會被送出。',
+            hint: '為 input 設定 <code>name</code> 屬性，例如 <code>name="account"</code>。',
+            htmlTemplate: `<div class="container">
+  <form>
+    <label for="account">帳號:</label>
+    <input type="text" id="account" {{input1}}="account">
+  </form>
+</div>`,
+            inputs: [{ placeholder: 'name', answer: 'name' }],
+            preview: '<div class="container"><form><label for="account">帳號:</label> <input type="text" id="account" name="account"></form></div>',
+            image: './images/no-image.png',
+            url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/input#name',
+            pageTitle: 'Input Name Attribute',
+            pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/input#name',
+            cssRule: '/* name attribute is for form submission */'
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

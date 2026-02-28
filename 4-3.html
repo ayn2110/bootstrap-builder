@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 4-3</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '4-3',
+            title: 'Object-Fit 裁切',
+            description: '使用 object-fit 屬性控制圖片在容器中的顯示方式,解決圖片變形問題。',
+            hint: '使用 <code>object-fit: cover</code> 讓圖片填滿容器並保持比例,或使用 <code>object-fit: contain</code> 完整顯示圖片。(此為自定義樣式 非Bootstrap class)',
+            htmlTemplate: `<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="image-container" style="width: 100%; height: 200px; overflow: hidden; border-radius: 10px;">
+        <img src="https://via.placeholder.com/600x800/dc3545/white?text=Portrait" class="{{input1}}" style="{{input2}}" alt="">
+      </div>
+      <p class="mt-2 text-center">Object-fit: Cover</p>
+    </div>
+    <div class="col-md-3">
+      <div class="image-container" style="width: 100%; height: 200px; overflow: hidden; border-radius: 10px; background: #f8f9fa;">
+        <img src="https://via.placeholder.com/600x800/17a2b8/white?text=Portrait" style="width: 100%; height: 100%; object-fit: contain;" alt="">
+      </div>
+      <p class="mt-2 text-center">Object-fit: Contain</p>
+    </div>
+  </div>
+</div>`,
+            inputs: [{ placeholder: 'img-cover', answer: 'img-cover' }],
+            preview: '<div class="container"><div class="row"><div class="col-md-6"><div style="width: 100%; height: 150px; overflow: hidden; border-radius: 10px;"><img src="https://placedog.net/600/600" class="{{class1}}"  alt=""></div><p class="text-center mt-2" style="font-size: 0.85em;">Object-fit: Cover</p></div><div class="col-md-6"><div style="width: 100%; height: 150px; overflow: hidden; border-radius: 10px; background: #f8f9fa; display: flex; align-items: center; justify-content: center;"><img src="https://placedog.net/600/600" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="示例"></div><p class="text-center mt-2" style="font-size: 0.85em;">Object-fit: Contain</p></div></div></div>',
+            image: './images/no-image.png',
+            url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/object-fit',
+            pageTitle: 'Object-fit - 圖片適應控制',
+            pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS/object-fit',
+            cssRule: `/* CSS Object Fit */
+object-fit: cover;
+/* or */
+object-fit: contain;`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

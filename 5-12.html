@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 5-12</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '5-12',
+            title: '格式限制',
+            description: '表單驗證步驟 4：使用 HTML5 屬性如 type="email" 或 minlength 來觸發更具體的驗證。例如 type="email"、pattern="..."、minlength="..." 等，這些也會觸發瀏覽器的內建驗證邏輯。',
+            hint: '設定 <code>minlength="3"</code> 要求使用者至少輸入 3 個字元。',
+            htmlTemplate: `<div class="container">
+  <form class="needs-validation" novalidate>
+    <label for="v2" class="form-label">帳號</label>
+    <input type="text" class="form-control" id="v2" required {{input1}}="3">
+  </form>
+</div>`,
+            inputs: [{ placeholder: 'minlength', answer: 'minlength' }],
+            preview: '<div class="container"><form class="needs-validation" novalidate><label for="v2" class="form-label">帳號</label><input type="text" class="form-control" id="v2" required {{class1}}="3"></form></div>',
+            image: './images/no-image.png',
+            url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Attributes/minlength',
+            pageTitle: 'HTML Attribute - Minlength',
+            pageLink: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML/Attributes/minlength',
+            cssRule: '/* :invalid pseudo-class triggers when length < minlength */'
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

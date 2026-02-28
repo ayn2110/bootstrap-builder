@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 5-6</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '5-6',
+            title: '核取與單選',
+            description: '自定義 Checkbox 和 Radio 樣式。',
+            hint: 'input 使用 <code>form-check-input</code>，label 使用 <code>form-check-label</code>，外層包 <code>form-check</code>。',
+            htmlTemplate: `<div class="container">
+  <div class="form-check">
+    <input class="{{input1}}" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Default checkbox
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="{{input1}}" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    <label class="form-check-label" for="flexRadioDefault1">
+      Default radio
+    </label>
+  </div>
+</div>`,
+            inputs: [{ placeholder: 'form-check-input', answer: 'form-check-input' }],
+            preview: '<div class="container"><div class="form-check"><input class="{{class1}}" type="checkbox" value="" id="flexCheckDefault"><label class="form-check-label" for="flexCheckDefault">Default checkbox</label></div><div class="form-check"><input class="{{class1}}" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label class="form-check-label" for="flexRadioDefault1">Default radio</label></div></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/forms/checks-radios/',
+            pageTitle: 'Forms - Checks & radios',
+            pageLink: 'https://getbootstrap.com/docs/5.3/forms/checks-radios/',
+            cssRule: `.form-check-input {
+  width: 1em;
+  height: 1em;
+  margin-top: 0.25em;
+  vertical-align: top;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

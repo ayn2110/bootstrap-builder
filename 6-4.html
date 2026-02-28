@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 6-4</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '6-4',
+                        title: '全螢幕覆蓋',
+                        description: '創建一個全螢幕的遮罩層 (Overlay)。',
+                        hint: '使用 <code>.position-fixed</code> 並設定四邊為 0 (<code>top-0</code>, <code>bottom-0</code>, <code>start-0</code>, <code>end-0</code>)。',
+                        htmlTemplate: `<div class="container-fluid" style="min-height: 70vh; border: 1px solid #ccc; padding: 24px;">
+    <button class="btn btn-secondary">底層內容</button>
+    <div class="{{input1}} {{input2}} {{input3}} {{input4}} {{input5}} bg-dark opacity-50" style="z-index: 1050;"></div>
+</div>`,
+            inputs: [
+                                { placeholder: 'position-fixed', answer: 'position-fixed' },
+                                { placeholder: 'top-0', answer: 'top-0' },
+                                { placeholder: 'bottom-0', answer: 'bottom-0' },
+                                { placeholder: 'start-0', answer: 'start-0' },
+                                { placeholder: 'end-0', answer: 'end-0' }
+            ],
+                        preview: '<div class="container-fluid" style="position: relative; min-height: 70vh; border: 1px solid #ddd; padding: 24px;"><button class="btn btn-secondary">底層內容</button><div class="{{class1}} {{class2}} {{class3}} {{class4}} {{class5}} bg-dark opacity-50 d-flex justify-content-center align-items-center" style="z-index: 1050; position: absolute; min-height: 220px; min-width: 320px;"><button class="btn btn-light btn-sm" onclick="this.parentElement.classList.remove(\'position-fixed\', \'top-0\', \'bottom-0\', \'start-0\', \'end-0\')">關閉預覽 (Close Preview)</button></div></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                        pageTitle: 'Position - Fullscreen',
+            pageLink: 'https://getbootstrap.com/docs/5.3/utilities/position/',
+                        cssRule: `.top-0 { top: 0 !important; }
+.bottom-0 { bottom: 0 !important; }
+.start-0 { left: 0 !important; }
+.end-0 { right: 0 !important; }`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

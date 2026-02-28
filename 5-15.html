@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 5-15</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '5-15',
+            title: '啟用驗證',
+            description: '表單驗證步驟 7：使用 JavaScript 攔截送出事件，檢查有效性，並加上 was-validated 類別來顯示結果。',
+            hint: '在 JS 中，我們通常會執行 <code>form.classList.add(\'was-validated\')</code>。',
+            htmlTemplate: `<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('{{input1}}')
+    }, false)
+  })
+})()
+<\/script>`,
+            inputs: [{ placeholder: 'was-validated', answer: 'was-validated' }],
+            preview: '<div class="container"><div class="alert alert-info">此關卡模擬 JS 執行：<br><code>form.classList.add(\'{{class1}}\')</code></div></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/forms/validation/#custom-styles',
+            pageTitle: 'Forms - JavaScript',
+            pageLink: 'https://getbootstrap.com/docs/5.3/forms/validation/#custom-styles',
+            cssRule: `.was-validated .form-control:valid { border-color: var(--bs-success); }`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>
