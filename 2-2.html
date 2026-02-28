@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 2-2</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '2-2',
+            title: '文字置中',
+            description: '將標題文字對齊置中。',
+            hint: '使用 <code>.text-center</code> 來將文字置中對齊。',
+            htmlTemplate: `<div class="container">
+  <h2 class="{{input1}}">歡迎來到我們的網站</h2>
+</div>`,
+            inputs: [{ placeholder: 'text-center', answer: 'text-center' }],
+            preview: '<div class="container"><h2 class="{{class1}}" style="background: #e9ecef; padding: 20px; border-radius: 5px;">歡迎來到我們的網站</h2></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/utilities/text/',
+            pageTitle: 'Text - 文字對齊',
+            pageLink: 'https://getbootstrap.com/docs/5.3/utilities/text/#text-alignment',
+            cssRule: `.text-center {
+  text-align: center !important;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

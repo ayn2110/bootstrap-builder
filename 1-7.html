@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 1-7</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '1-7',
+            title: '多包一層',
+            description: '了解 Grid System 的運作原理：col 本身有預設的 padding (gutter)，若要讓內容有背景色且不貼齊邊界，應在 col 內多包一層。',
+            hint: '外層使用 <code>.col</code> 定義欄位寬度，內層元素負責樣式與內容。',
+            htmlTemplate: `<div class="container">
+  <div class="row">
+    <div class="{{input1}}">
+      <div class="bg-primary text-white p-3">內容區塊</div>
+    </div>
+    <div class="{{input1}}">
+      <div class="bg-primary text-white p-3">內容區塊</div>
+    </div>
+  </div>
+</div>`,
+            inputs: [{ placeholder: '', answer: 'col' }],
+            preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-primary text-white p-3">內容區塊</div></div><div class="{{class1}}"><div class="bg-primary text-white p-3">內容區塊</div></div></div></div>',
+            image: './images/1-7.png',
+            url: 'https://www.coldstone.com.tw/product/seasonal.html',
+            pageTitle: 'Grid System - 巢狀結構',
+            pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/',
+            cssRule: `.col {
+  flex: 1 0 0%;
+}
+/* Padding is handled by the gutter on .row > * */`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

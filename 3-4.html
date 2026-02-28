@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 3-4</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '3-4',
+            title: '消除間距',
+            description: '消除圖片畫廊中所有 row 與 col 之間的預設邊距 (gutter),實現無縫接合。',
+            hint: '在 <code>.row</code> 上使用 <code>.g-0</code> 來移除所有間距。',
+            htmlTemplate: `<div class="container">
+  <div class="row {{input1}}">
+    <div class="col-4">圖片1</div>
+    <div class="col-4">圖片2</div>
+    <div class="col-4">圖片3</div>
+  </div>
+</div>`,
+            inputs: [{ placeholder: 'g-0', answer: 'g-0' }],
+            preview: '<div class="container"><div class="row {{class1}}"><div class="col-4 preview-element" style="margin: 0;">圖片1</div><div class="col-4 preview-element" style="margin: 0;">圖片2</div><div class="col-4 preview-element" style="margin: 0;">圖片3</div></div></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/layout/gutters/',
+            pageTitle: 'Gutters - 間距控制',
+            pageLink: 'https://getbootstrap.com/docs/5.3/layout/gutters/#no-gutters',
+            cssRule: `.g-0,
+.gx-0 {
+  --bs-gutter-x: 0;
+}
+.g-0,
+.gy-0 {
+  --bs-gutter-y: 0;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 2-6</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '2-6',
+            title: '均勻分佈',
+            description: '將一組按鈕水平放置,並確保它們之間及邊緣都有平均間隔。',
+            hint: '在 <code>.row</code> 上使用 <code>.justify-content-around</code> 來均勻分佈元素。',
+            htmlTemplate: `<div class="container">
+  <div class="row {{input1}}">
+    <div class="col-auto">按鈕1</div>
+    <div class="col-auto">按鈕2</div>
+    <div class="col-auto">按鈕3</div>
+  </div>
+</div>`,
+            inputs: [{ placeholder: 'justify-content-around', answer: 'justify-content-around' }],
+            preview: '<div class="container"><div class="row {{class1}}"><div class="col-auto preview-element">按鈕1</div><div class="col-auto preview-element">按鈕2</div><div class="col-auto preview-element">按鈕3</div></div></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/utilities/flex/',
+            pageTitle: 'Flex - 水平分佈',
+            pageLink: 'https://getbootstrap.com/docs/5.3/utilities/flex/#justify-content',
+            cssRule: `.justify-content-around {
+  justify-content: space-around !important;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

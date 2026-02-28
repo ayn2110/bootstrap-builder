@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 2-1</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '2-1',
+            title: '水平居中',
+            description: '將一個固定寬度的區塊 (如登入表單) 在頁面上水平置中。',
+            hint: '使用 <code>.mx-auto</code> 來設置左右外邊距為自動,實現水平居中。需要配合固定寬度的欄位如 <code>.col-6</code>。',
+            htmlTemplate: `<div class="container">
+  <div class="row">
+    <div class="col-6 {{input1}}">登入表單</div>
+  </div>
+</div>`,
+            inputs: [{ placeholder: 'mx-auto', answer: 'mx-auto' }],
+            preview: '<div class="container"><div class="row"><div class="col-6 {{class1}} preview-element">登入表單</div></div></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
+            pageTitle: 'Spacing - 自動外邊距',
+            pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#horizontal-centering',
+            cssRule: `.mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

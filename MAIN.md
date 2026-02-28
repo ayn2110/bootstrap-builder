@@ -128,3 +128,35 @@ js掛載於</body>前
 - [x] 開啟 GitHub Pages 功能 (已建立 index.html，請至 GitHub Settings 設定)
 - [ ] 優化手機版顯示體驗
 - [ ] 增加更多進階 Bootstrap 元件關卡
+
+請你 E to E測試
+end
+請幫我寫E2E的測試腳本
+測試每個按鈕
+
+從前端到資料端
+五個節點
+1.UI
+2.前端Code
+3.API
+4.後端Code
+5.資料庫
+填
+端對端測試
+renchatn
+rengrave
+langrave
+ELT 資料清洗結構化
+手寫agent
+vector database
+subcrud
+subcloud
+
+把主邏輯放擋頭
+其他邏輯包成函式
+
+內容後台 LLM整合
+
+SPEC
+1.技術
+2.介面

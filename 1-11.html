@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 1-11</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '1-11',
+            title: '左窄右寬',
+            description: '創建一個左側較窄、右側較寬的佈局:左側佔 4 欄,右側佔 8 欄。',
+            hint: '使用 <code>.col-4</code> 和 <code>.col-8</code> 來指定欄寬。',
+            htmlTemplate: `<div class="container">
+  <div class="row">
+    <div class="{{input1}}"><div class="bg-primary text-white p-3">側邊欄</div></div>
+    <div class="{{input2}}"><div class="bg-primary text-white p-3">主內容</div></div>
+  </div>
+</div>`,
+            inputs: [
+                { placeholder: '', answer: 'col-4' },
+                { placeholder: '', answer: 'col-8' }
+            ],
+            preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-primary text-white p-3">側邊欄</div></div><div class="{{class2}}"><div class="bg-primary text-white p-3">主內容</div></div></div></div>',
+            image: './images/1-11.png',
+            url: 'https://www.mos.com.tw/member/activity.html',
+            pageTitle: 'Grid System - 固定欄寬',
+            pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#setting-one-column-width',
+            cssRule: `.col-4 {
+  width: 33.33333333%;
+}
+.col-8 {
+  width: 66.66666667%;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 3-1</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '3-1',
+            title: '中斷點分割',
+            description: '(RWD) 在桌面 (md) 尺寸下,將兩張卡片並排 (各佔 6 欄),但在手機 (xs) 上必須堆疊。',
+            hint: '使用 <code>.col-12</code> (手機全寬) 和 <code>.col-md-6</code> (桌面各半) 組合。',
+            htmlTemplate: `<div class="container">
+  <div class="row">
+    <div class="{{input1}} {{input2}}">卡片 A</div>
+    <div class="{{input1}} {{input2}}">卡片 B</div>
+  </div>
+</div>`,
+            inputs: [
+                { placeholder: 'col-12', answer: 'col-12' },
+                { placeholder: 'col-md-6', answer: 'col-md-6' }
+            ],
+            preview: '<div class="container"><div class="row"><div class="{{class1}} {{class2}} preview-element">卡片 A</div><div class="{{class1}} {{class2}} preview-element">卡片 B</div></div></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/layout/breakpoints/',
+            pageTitle: 'Breakpoints - 響應式斷點',
+            pageLink: 'https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints',
+            cssRule: `@media (min-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 1-12</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '1-12',
+            title: '左寬右窄',
+            description: '主要內容佔 7 欄,圖片區佔 5 欄。',
+            hint: '使用 <code>.col-7</code> 和 <code>.col-5</code> 來分配空間。',
+            htmlTemplate: `<div class="container">
+  <div class="row">
+    <div class="{{input1}}"><div class="bg-primary text-white p-3">數據表格</div></div>
+    <div class="{{input2}}"><div class="bg-primary text-white p-3">操作按鈕</div></div>
+  </div>
+</div>`,
+            inputs: [
+                { placeholder: '', answer: 'col-7' },
+                { placeholder: '', answer: 'col-5' }
+            ],
+            preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-primary text-white p-3">數據表格</div></div><div class="{{class2}}"><div class="bg-primary text-white p-3">操作按鈕</div></div></div></div>',
+            image: './images/1-12.png',
+            url: 'https://www.chimeimuseum.org/special-exhibition/68a68f0a422a6/68a68fa1d1a3b',
+            pageTitle: 'Grid System - 不等分佈局',
+            pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#mix-and-match',
+            cssRule: `.col-7 {
+  width: 58.33333333%;
+}
+.col-5 {
+  width: 41.66666667%;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

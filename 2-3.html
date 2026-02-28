@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 2-3</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '2-3',
+            title: '底部外擴',
+            description: '調整圖片區塊的下外邊距 (Margin Bottom) 為級別 4,與下方內容拉開距離。',
+            hint: '使用 <code>.mb-4</code> 來設置下外邊距。',
+            htmlTemplate: `<div class="container">
+  <div class="image-box {{input1}}">圖片區域</div>
+  <p>說明文字</p>
+</div>`,
+            inputs: [{ placeholder: 'mb-4', answer: 'mb-4' }],
+            preview: '<div class="container"><div class="{{class1}}" style="background: #667eea; color: white; padding: 40px; text-align: center; border-radius: 5px;">圖片區域</div><p style="padding: 20px; background: #f8f9fa; border-radius: 5px;">說明文字</p></div>',
+            image: './images/no-image.png',
+            url: 'https://getbootstrap.com/docs/5.3/utilities/spacing/',
+            pageTitle: 'Spacing - 外邊距工具',
+            pageLink: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#margin-and-padding',
+            cssRule: `.mb-4 {
+  margin-bottom: 1.5rem !important;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>

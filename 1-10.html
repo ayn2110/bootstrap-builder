@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Builder - 關卡 1-10</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./chapter1-level.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.levelConfig = {
+            id: '1-10',
+            title: '多筆資料',
+            description: '當有多筆資料需要呈現時，使用 col-* 指定欄位寬度，讓它們自動換行排列。',
+            hint: '使用 <code>col-4</code> 讓每行顯示三個項目（12 / 4 = 3）。',
+            htmlTemplate: `<div class="container">
+  <div class="row">
+    <div class="{{input1}}"><div class="bg-primary text-white p-3 mb-3">資料 1</div></div>
+    <div class="{{input1}}"><div class="bg-primary text-white p-3 mb-3">資料 2</div></div>
+    <div class="{{input1}}"><div class="bg-primary text-white p-3 mb-3">資料 3</div></div>
+    <div class="{{input1}}"><div class="bg-primary text-white p-3 mb-3">資料 4</div></div>
+    <div class="{{input1}}"><div class="bg-primary text-white p-3 mb-3">資料 5</div></div>
+  </div>
+</div>`,
+            inputs: [{ placeholder: '', answer: 'col-4' }],
+            preview: '<div class="container"><div class="row"><div class="{{class1}}"><div class="bg-primary text-white p-3 mb-3">資料 1</div></div><div class="{{class1}}"><div class="bg-primary text-white p-3 mb-3">資料 2</div></div><div class="{{class1}}"><div class="bg-primary text-white p-3 mb-3">資料 3</div></div><div class="{{class1}}"><div class="bg-primary text-white p-3 mb-3">資料 4</div></div><div class="{{class1}}"><div class="bg-primary text-white p-3 mb-3">資料 5</div></div></div></div>',
+            image: './images/1-10.png',
+            url: 'https://www.crun.com.tw/news.php?act=list&cid=1',
+            pageTitle: 'Grid System - 多行排列',
+            pageLink: 'https://getbootstrap.com/docs/5.3/layout/grid/#row-columns',
+            cssRule: `.col-4 {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}`
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./chapter1-level.js"></script>
+</body>
+</html>
